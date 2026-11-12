@@ -1,6 +1,6 @@
 # Honestly Guessing: blog design
 
-A personal blog on GitHub Pages. Each post takes a saying, tests it with data and links to a repository with the code. The first post is the soul mates project.
+A personal blog on GitHub Pages. The posts look at sayings, common ideas and other things people repeat, and at what the data says about them. Talks live here too. A post does not have to be about a saying. The first post is the soul mates project.
 
 This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start with an underscore, and `docs/` holds the rendered site.
 

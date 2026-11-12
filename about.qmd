@@ -3,6 +3,6 @@ title: "About"
 toc: false
 ---
 
-Honestly Guessing takes a saying that everybody knows and checks it against data. Each post states its guesses in the open, shows where every number comes from, and links to code you can run.
+Honestly Guessing is my blog. I try to investigate sayings, common ideas and other things people repeat, and check what the data says about them. You will also find my talks here.
 
-The code for each post has its own repository on [GitHub](https://github.com/MedAmineGBerry).
+The code is on [GitHub](https://github.com/MedAmineGBerry), so you can run it and check me.

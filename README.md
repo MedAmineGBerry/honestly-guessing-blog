@@ -1,6 +1,6 @@
 # Honestly Guessing
 
-A blog that takes a saying everybody knows and checks it against data. Each post states its guesses in the open, shows where every number comes from and links to code you can run. Talks and their decks live inside the posts.
+Honestly Guessing is my blog. I try to investigate sayings, common ideas and other things people repeat, and check what the data says about them. You will also find my talks here.
 
 When the site is switched on, it is at <https://medaminegberry.github.io/honestly-guessing-blog/>.
 
