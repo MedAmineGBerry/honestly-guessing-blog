@@ -41,69 +41,37 @@ sleeve: teal
 
 3. Add a row to the table of posts in this file.
 
-## Publish a change
+## Publish
 
-GitHub serves the folder `docs/` as it is. No build runs on GitHub, so render before you commit.
-
-```bash
-uv run quarto render
-```
+The source of the blog lives on the branch `main`. The finished site lives on a second branch, `gh-pages`, and GitHub serves that branch. One command renders the site and pushes it there:
 
 ```bash
-git add -A
+uv run quarto publish gh-pages --no-browser
 ```
 
-```bash
-git commit -m "Describe the change"
-```
+It asks once for a yes. The site updates one or two minutes later.
 
-```bash
-git push
-```
-
-The site updates one or two minutes after the push.
+Saving your work is a separate step, with the usual `git add`, `git commit` and `git push` on `main`. The rendered folder `docs/` is not committed.
 
 ## Turn the site on and off
 
-Switching the site off takes the web pages offline. The repository and its files stay public on GitHub. To hide those as well, make the repository private under Settings.
+The site is on while the branch `gh-pages` exists on GitHub. So the switch is two plain git commands, and no extra tool is needed.
 
-### In the browser
-
-To switch it off, open the repository on GitHub, then Settings, then Pages. Next to "Your site is live at", open the menu with the three dots and choose "Unpublish site".
-
-To switch it on, open Settings, then Pages. Under "Build and deployment" choose "Deploy from a branch", the branch `main` and the folder `/docs`, and save. GitHub publishes again with the next push. If there is nothing new to push, send an empty commit:
+Switch it on. This is the publish command from above:
 
 ```bash
-git commit --allow-empty -m "Publish the site again"
+uv run quarto publish gh-pages --no-browser
 ```
+
+Switch it off. This deletes the published copy on GitHub and nothing else:
 
 ```bash
-git push
+git push origin --delete gh-pages
 ```
 
-### From the terminal
+Switching off takes the web pages offline. Your posts and all source files stay safe on `main`. The repository itself stays public on GitHub. To hide that as well, make the repository private under Settings.
 
-This needs the GitHub command line tool `gh`. Log in once with `gh auth login`.
-
-Switch it off:
-
-```bash
-gh api -X DELETE repos/MedAmineGBerry/honestly-guessing-blog/pages
-```
-
-Switch it on:
-
-```bash
-gh api -X POST repos/MedAmineGBerry/honestly-guessing-blog/pages -f "source[branch]=main" -f "source[path]=/docs"
-```
-
-Check the state. The answer is `built` when the site is on, `building` while GitHub prepares it, and an error "Not Found" when it is off.
-
-```bash
-gh api repos/MedAmineGBerry/honestly-guessing-blog/pages --jq .status
-```
-
-If the state stays empty after switching on, send the empty commit from above.
+If the site does not react, look at Settings, then Pages, on GitHub. The branch there should read `gh-pages`. To force the site off by hand, open the three dots next to "Your site is live at" and choose "Unpublish site".
 
 ## How it is put together
 
@@ -114,7 +82,7 @@ If the state stays empty after switching on, send the empty commit from above.
 | `listing.ejs` | The home page, one row per post. |
 | `posts/title-block.html` | The header of a post, with the verdict sticker. |
 | `fonts/` | Fraunces and IBM Plex Sans, served from this site. |
-| `docs/` | The rendered site. Do not edit it by hand. |
+| `docs/` | The rendered site on your machine. It is not committed. |
 
 The pages load nothing from other servers. The design decisions are written down in `_docs/superpowers/specs/2026-11-12-blog-design.md`.
 

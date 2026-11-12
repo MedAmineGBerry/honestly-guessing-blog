@@ -5,3 +5,6 @@ __pycache__/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# the rendered site; "quarto publish gh-pages" pushes it to the branch gh-pages
+/docs/

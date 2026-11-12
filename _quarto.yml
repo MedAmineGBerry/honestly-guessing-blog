@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs   # GitHub Pages serves this folder from the main branch
+  output-dir: docs   # rendered here, then pushed to the branch gh-pages by "quarto publish"
   resources:
     - "posts/soulmates/deck.html"
 
