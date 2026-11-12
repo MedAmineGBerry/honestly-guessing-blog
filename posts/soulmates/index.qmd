@@ -18,7 +18,7 @@ The saying goes that there is one person out there for you. I tested it with dat
 
 The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. He estimated the numbers. I wanted to measure them. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
-## Let's think about 4 people
+## Start with 4 people
 
 Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.
 
@@ -41,15 +41,26 @@ Play a few lives and watch the count settle near that number.
 <script src="pool.js"></script>
 ```
 
-Both results follow one pattern. Multiply the people you meet by the chance to recognize, and divide by the pool. Here that is 2 × 0.5 / 4 = 0.25.
+Both results follow one pattern. Multiply the number of people you meet by the chance of recognizing each other, and divide by the size of the pool. Here that is 2 × 0.5 / 4 = 0.25.
 
 The model uses this formula:
 
 ```
-P_find = 1 − (1 − p_recog / M) ^ N
+P_find = 1 − (1 − 1/M × p_recog) ^ N
 ```
 
-M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. This form treats every meeting as a separate try. With 4 people that changes the answer a little, to 0.23. With a pool of more than a billion, it is the same as N × p_recog / M. So I need three numbers.
+M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other.
+
+Read it from the inside out, with the 4 people and sure recognition. Call them A, B, C and D, and say A is your soul mate.
+
+1. One meeting works out with chance 1/4 × 1 = 1/4. It must be A, and you must recognize each other.
+2. One meeting fails with chance 1 − 1/4 = 3/4. It is B, C or D.
+3. Both meetings fail with chance (3/4)² = 9/16. Each meeting can be any of the 4, so there are 16 equally likely pairs. Of those, 3 × 3 = 9 have no A.
+4. At least one meeting works out with chance 1 − 9/16 = 7/16. The other 7 pairs contain A.
+
+Why count the failures? A success can come on the first meeting, the second or both, and "both" is easy to count twice. Failing every time happens in one way only.
+
+The formula lets a meeting land on the same person twice, like the pair AA. That is why it gives 7/16 instead of the 8/16 you get with 2 different people, and 0.23 instead of 0.25 with half recognition. With a pool of more than a billion the difference vanishes, and the formula is the same as N × 1/M × p_recog. So I need three numbers.
 
 ## 1.33 billion people your age
 
@@ -90,6 +101,14 @@ Now the three numbers go into the formula. N averages about 6,850. That is highe
 ```
 
 That is about 1 in 325,800. The 94% interval runs from 1 in 1.5 million to 1 in 115,000.
+
+One detail for anyone who runs the code. Call the chance per meeting x. Here x = 0.596 / 1,328,956,521 = 0.000000000448. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999995515279, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
+
+```python
+P_find = -np.expm1(N * np.log1p(-p_recog / M))
+```
+
+It is the same formula, because any number a raised to the power N equals exp(N × log a).
 
 The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
 
