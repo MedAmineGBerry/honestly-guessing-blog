@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples tell a kinder story.">
+<meta name="description" content="If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples point to about 14 possible partners.">
 
 <title>Is there really only one? – Honestly Guessing</title>
 <style>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-275ea92fec2332d09817369fdcce4fd0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-803e3de4835bbac1c310467370b2da81.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,14 +121,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-question-with-small-numbers-first" id="toc-the-question-with-small-numbers-first" class="nav-link active" data-scroll-target="#the-question-with-small-numbers-first">The question, with small numbers first</a></li>
-  <li><a href="#m-a-pool-of-1.33-billion" id="toc-m-a-pool-of-1.33-billion" class="nav-link" data-scroll-target="#m-a-pool-of-1.33-billion">M: a pool of 1.33 billion</a></li>
-  <li><a href="#n-the-people-you-meet-and-talk-to" id="toc-n-the-people-you-meet-and-talk-to" class="nav-link" data-scroll-target="#n-the-people-you-meet-and-talk-to">N: the people you meet and talk to</a></li>
-  <li><a href="#p_recog-the-one-guess" id="toc-p_recog-the-one-guess" class="nav-link" data-scroll-target="#p_recog-the-one-guess">p_recog: the one guess</a></li>
-  <li><a href="#the-odds" id="toc-the-odds" class="nav-link" data-scroll-target="#the-odds">The odds</a></li>
+  <li><a href="#lets-think-about-4-people" id="toc-lets-think-about-4-people" class="nav-link active" data-scroll-target="#lets-think-about-4-people">Let’s think about 4 people</a></li>
+  <li><a href="#billion-people-your-age" id="toc-billion-people-your-age" class="nav-link" data-scroll-target="#billion-people-your-age">1.33 billion people your age</a></li>
+  <li><a href="#how-many-people-do-you-meet" id="toc-how-many-people-do-you-meet" class="nav-link" data-scroll-target="#how-many-people-do-you-meet">How many people do you meet?</a></li>
+  <li><a href="#would-you-recognize-them" id="toc-would-you-recognize-them" class="nav-link" data-scroll-target="#would-you-recognize-them">Would you recognize them?</a></li>
+  <li><a href="#so-what-are-the-odds" id="toc-so-what-are-the-odds" class="nav-link" data-scroll-target="#so-what-are-the-odds">So what are the odds?</a></li>
   <li><a href="#but-almost-everyone-finds-someone" id="toc-but-almost-everyone-finds-someone" class="nav-link" data-scroll-target="#but-almost-everyone-finds-someone">But almost everyone finds someone</a></li>
   <li><a href="#the-talk" id="toc-the-talk" class="nav-link" data-scroll-target="#the-talk">The talk</a></li>
-  <li><a href="#what-this-leaves-out" id="toc-what-this-leaves-out" class="nav-link" data-scroll-target="#what-this-leaves-out">What this leaves out</a></li>
+  <li><a href="#what-i-left-out" id="toc-what-i-left-out" class="nav-link" data-scroll-target="#what-i-left-out">What I left out</a></li>
   <li><a href="#data-and-credits" id="toc-data-and-credits" class="nav-link" data-scroll-target="#data-and-credits">Data and credits</a></li>
   </ul>
 </nav>
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title">
 <div class="title-text">
 <h1 class="title">Is there really only one?</h1>
-<p class="subtitle lead">Soul mates, measured with PyMC, four datasets and one stated guess.</p>
+<p class="subtitle lead">I checked with four datasets and one guess.</p>
 <p class="label">Op. 1 / November 2026</p>
 </div>
 <div class="sticker"><span class="label">The verdict</span><span class="sticker-text">About fourteen</span></div>
@@ -150,23 +150,37 @@ ul.task-list li input[type="checkbox"] {
 
 <p>The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples points to a kinder rule. About 14 of the people your own age you will talk to could become a partner.</p>
 <p>The idea comes from the soul mates chapter of Randall Munroe’s book <em>What If?</em>. He estimated the numbers. I wanted to measure them. All the code is in the <a href="https://github.com/MedAmineGBerry/soulmates">soulmates repository</a>.</p>
-<section id="the-question-with-small-numbers-first" class="level2">
-<h2 class="anchored" data-anchor-id="the-question-with-small-numbers-first">The question, with small numbers first</h2>
+<section id="lets-think-about-4-people" class="level2">
+<h2 class="anchored" data-anchor-id="lets-think-about-4-people">Let’s think about 4 people</h2>
 <p>Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.</p>
-<p>Now say you only recognize them half of the time. Each meeting then succeeds with chance (1/4) × 0.5 = 1/8. The chance that at least one of your 2 meetings succeeds is 1 − (7/8)² = 15/64, about 0.23.</p>
-<p>The real calculation is the same, with bigger numbers:</p>
+<p>Now say you only recognize them half of the time. Your soul mate is still among the 2 people you meet in half of all lives, and in half of those lives you recognize them. That is 0.5 × 0.5 = 0.25.</p>
+<p>Play a few lives and watch the count settle near that number.</p>
+<figure class="pool figure" id="pool">
+<div class="pool-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<p class="pool-says" aria-live="polite">Four people. One of them is your soul mate, and you will meet two.</p>
+<div class="lives-controls">
+<button type="button" class="label" data-one="">Play one life</button>
+<button type="button" class="label" data-many="">Play 100 lives</button>
+<label><input type="checkbox" data-half="" checked=""> You recognize them half of the time</label>
+</div>
+<p class="lives-count"><span data-found="">0</span> of <span data-lives="">0</span> lives found their soul mate.</p>
+<figcaption>The ringed dot is your soul mate. The filled dots are the two people you meet. Over many lives the share settles near 0.25, and near 0.5 when you untick the box and always recognize them.</figcaption>
+</figure>
+<script src="pool.js"></script>
+<p>Both results follow one pattern. Multiply the people you meet by the chance to recognize, and divide by the pool. Here that is 2 × 0.5 / 4 = 0.25.</p>
+<p>The model uses this formula:</p>
 <pre><code>P_find = 1 − (1 − p_recog / M) ^ N</code></pre>
-<p>M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. When the result is tiny, it is close to N × p_recog / M. So the whole project comes down to three numbers.</p>
+<p>M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. This form treats every meeting as a separate try. With 4 people that changes the answer a little, to 0.23. With a pool of more than a billion, it is the same as N × p_recog / M. So I need three numbers.</p>
 </section>
-<section id="m-a-pool-of-1.33-billion" class="level2">
-<h2 class="anchored" data-anchor-id="m-a-pool-of-1.33-billion">M: a pool of 1.33 billion</h2>
+<section id="billion-people-your-age" class="level2">
+<h2 class="anchored" data-anchor-id="billion-people-your-age">1.33 billion people your age</h2>
 <p>The premise says your soul mate is about your age. I took everyone alive in 2023 who is within 5 years of age 30. The UN World Population Prospects 2024 count them: 1,328,956,521 people.</p>
 </section>
-<section id="n-the-people-you-meet-and-talk-to" class="level2">
-<h2 class="anchored" data-anchor-id="n-the-people-you-meet-and-talk-to">N: the people you meet and talk to</h2>
+<section id="how-many-people-do-you-meet" class="level2">
+<h2 class="anchored" data-anchor-id="how-many-people-do-you-meet">How many people do you meet?</h2>
 <p>This number took most of the work.</p>
 <p>In two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked “first time”.</p>
-<p>One detail matters more than any other. The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.</p>
+<p>The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.</p>
 <p>Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.</p>
 <p>The model does the same sum with more care. The rate peaks in the twenties. Weekend days bring 1.23 times as many new people. And countries differ a lot.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -178,8 +192,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Each country gets its own level, and the levels come from one shared distribution. Countries with few diaries borrow strength from the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000.</p>
 <p>I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.</p>
 </section>
-<section id="p_recog-the-one-guess" class="level2">
-<h2 class="anchored" data-anchor-id="p_recog-the-one-guess">p_recog: the one guess</h2>
+<section id="would-you-recognize-them" class="level2">
+<h2 class="anchored" data-anchor-id="would-you-recognize-them">Would you recognize them?</h2>
 <p>No data exists for the chance that two soul mates recognize each other. So I state my guess as a sentence: “I am 90% sure it lies between 0.3 and 0.9.”</p>
 <p>A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one, so I add no certainty I do not have. The curve has an average of 0.596.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -189,12 +203,12 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="the-odds" class="level2">
-<h2 class="anchored" data-anchor-id="the-odds">The odds</h2>
+<section id="so-what-are-the-odds" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-are-the-odds">So what are the odds?</h2>
 <p>Now the three numbers go into the formula. N averages about 6,850. That is higher than its middle value of 5,800, because a few very talkative countries pull the average up.</p>
 <pre><code>6,850 × 0.596 / 1,328,956,521 = 0.00000307</code></pre>
 <p>That is about 1 in 325,800. The 94% interval runs from 1 in 1.5 million to 1 in 115,000.</p>
-<p>The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate. It is rare, and it happens to someone.</p>
+<p>The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.</p>
 </section>
 <section id="but-almost-everyone-finds-someone" class="level2">
 <h2 class="anchored" data-anchor-id="but-almost-everyone-finds-someone">But almost everyone finds someone</h2>
@@ -219,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.</p>
-<p>One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date. Where you talk to people matters as much as how many.</p>
+<p>One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.</p>
 </section>
 <section id="the-talk" class="level2">
 <h2 class="anchored" data-anchor-id="the-talk">The talk</h2>
@@ -230,8 +244,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.</p>
 </section>
-<section id="what-this-leaves-out" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-leaves-out">What this leaves out</h2>
+<section id="what-i-left-out" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-left-out">What I left out</h2>
 <ul>
 <li>The contact diaries come from Europe between 2005 and 2012, and the couples from the US in 2017.</li>
 <li>The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.</li>
