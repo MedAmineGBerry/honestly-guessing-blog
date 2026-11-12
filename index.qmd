@@ -10,5 +10,5 @@ toc: false
 ---
 
 ::: {.tagline}
-Folk wisdom, tested with data and one stated guess at a time.
+We all grew up with sayings that either gave us hope or held us back. Now that I work with data, I hope to bring some clarity to folk wisdom, and to learn from it in return.
 :::

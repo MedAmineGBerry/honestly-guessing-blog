@@ -6,6 +6,8 @@ date: 2026-11-12
 opus: 1
 verdict: "About fourteen"
 sleeve: mustard
+resources:
+  - lives.js
 categories: [bayes, pymc, folk wisdom]
 image: img/countries.png
 image-alt: "New people of your own age met between 15 and 60, for nine European countries"
@@ -79,6 +81,21 @@ So I turned the question around. What share of the people you talk to would have
 
 Take a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
 
+Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider to any age.
+
+```{=html}
+<figure class="lives" id="lives">
+<canvas role="img" aria-label="One thousand dots, one for each life. At age 18, 569 are lit. At age 30, 967 are lit. At age 60, 994 are lit."></canvas>
+<div class="lives-controls">
+<button type="button" class="label">Play</button>
+<label>Age <output data-age>18</output> <input type="range" min="18" max="60" value="18" aria-label="Age"></label>
+</div>
+<p class="lives-count"><span data-lit>569</span> of 1,000 have had a partner. With one soul mate each, the expected number who have found theirs is 0.</p>
+<figcaption>Each dot is one life. A dot lights up once that person has had a partner. The count at every age is what the fitted model gives: 569 at 18, 967 at 30 and 994 at 60.</figcaption>
+</figure>
+<script src="lives.js"></script>
+```
+
 ![Share of people who ever had a partner, by age. The dots are the survey. The solid line lets people differ in how many others they meet. The dotted line gives everyone the same number.](img/partners.png){fig-alt="Observed shares rise from 81% at 18 to 24 to more than 99% at 50 to 60. The solid model line follows them closely. The dotted line starts too low at 68%."}
 
 By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.
@@ -93,7 +110,7 @@ This post is the written version of a talk. The deck has 20 pages. Click into it
 <iframe src="deck.html" title="The talk deck: Is there really only one?" loading="lazy"></iframe>
 :::
 
-The repository also holds a small demo that plays out 1,000 lives under both rules. In a typical country, 973 of 1,000 lives had met a possible partner by age 30, and none had found their one soul mate.
+The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.
 
 ## What this leaves out
 

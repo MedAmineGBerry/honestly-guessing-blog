@@ -111,6 +111,17 @@ p.subtitle { font-style: italic; font-size: 1.15rem; line-height: 1.4; margin: .
 .record:not(:first-child) .sticker .label { display: none; }
 .record:not(:first-child) .sticker-text { font-size: .85rem; margin: 0; }
 
+// An animation inside a post: a canvas of dots, a play button and a slider.
+.lives { margin: 2rem 0; }
+.lives canvas { display: block; width: 100%; }
+.lives-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1rem; }
+.lives-controls button { background: $ink; color: $paper; border: 0; padding: .55rem 1.1rem; }
+.lives-controls label { display: flex; flex: 1; align-items: center; gap: .6rem; min-width: 14rem; font-weight: 500; }
+.lives-controls output { min-width: 1.3em; }
+.lives-controls input { flex: 1; accent-color: var(--s1); }
+.lives-count { margin: .9rem 0 .3rem; }
+.lives-count [data-lit] { font-weight: 500; border-bottom: 2px solid var(--s1); }
+
 @media (max-width: 600px) {
   .quarto-title-block .quarto-title { flex-direction: column; align-items: flex-start; }
   h1.title, .record:first-child .record-title { font-size: 2.2rem; }
