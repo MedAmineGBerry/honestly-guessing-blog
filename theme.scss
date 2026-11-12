@@ -112,7 +112,14 @@ p.subtitle { font-style: italic; font-size: 1.15rem; line-height: 1.4; margin: .
 .record:not(:first-child) .sticker-text { font-size: .85rem; margin: 0; }
 
 // An animation inside a post: a canvas of dots, a play button and a slider.
-.lives { margin: 2rem 0; }
+.lives, .pool { margin: 2rem 0; }
+// The small example: four people as four large dots.
+.pool-dots { display: flex; gap: 1.2rem; padding: .6rem; }
+.pool-dots i { width: 3.2rem; height: 3.2rem; border-radius: 50%; background: rgba($ink, .14); outline: 3px solid transparent; outline-offset: 4px; transition: background .4s, outline-color .4s; }
+.pool-dots .met { background: var(--s1); }
+.pool-dots .mate { outline-color: $ink; }
+.pool-says { margin: .8rem 0 0; font-style: italic; min-height: 1.7em; }
+.lives-controls input[type="checkbox"] { flex: none; width: 1.1rem; height: 1.1rem; }
 .lives canvas { display: block; width: 100%; }
 .lives-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1rem; }
 .lives-controls button { background: $ink; color: $paper; border: 0; padding: .55rem 1.1rem; }

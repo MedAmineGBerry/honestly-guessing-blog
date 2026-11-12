@@ -8,6 +8,7 @@ verdict: "About fourteen"
 sleeve: mustard
 resources:
   - lives.js
+  - pool.js
 categories: [bayes, pymc, folk wisdom]
 image: img/countries.png
 image-alt: "New people of your own age met between 15 and 60, for nine European countries"
@@ -21,15 +22,34 @@ The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. 
 
 Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.
 
-Now say you only recognize them half of the time. Each meeting then succeeds with chance (1/4) × 0.5 = 1/8. The chance that at least one of your 2 meetings succeeds is 1 − (7/8)² = 15/64, about 0.23.
+Now say you only recognize them half of the time. Your soul mate is still among the 2 people you meet in half of all lives, and in half of those lives you recognize them. That is 0.5 × 0.5 = 0.25.
 
-The real calculation is the same, with bigger numbers:
+Play a few lives and watch the count settle near that number.
+
+```{=html}
+<figure class="pool" id="pool">
+<div class="pool-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<p class="pool-says" aria-live="polite">Four people. One of them is your soul mate, and you will meet two.</p>
+<div class="lives-controls">
+<button type="button" class="label" data-one>Play one life</button>
+<button type="button" class="label" data-many>Play 100 lives</button>
+<label><input type="checkbox" data-half checked> You recognize them half of the time</label>
+</div>
+<p class="lives-count"><span data-found>0</span> of <span data-lives>0</span> lives found their soul mate.</p>
+<figcaption>The ringed dot is your soul mate. The filled dots are the two people you meet. Over many lives the share settles near 0.25, and near 0.5 when you untick the box and always recognize them.</figcaption>
+</figure>
+<script src="pool.js"></script>
+```
+
+Both results follow one pattern. Multiply the people you meet by the chance to recognize, and divide by the pool. Here that is 2 × 0.5 / 4 = 0.25.
+
+The model uses a more careful form of the same idea:
 
 ```
 P_find = 1 − (1 − p_recog / M) ^ N
 ```
 
-M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. When the result is tiny, it is close to N × p_recog / M. So the whole project comes down to three numbers.
+M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. This form treats every meeting as a separate try. With 4 people that changes the answer a little, to 0.23. With a pool of more than a billion, it is the same as N × p_recog / M. So the whole project comes down to three numbers.
 
 ## M: a pool of 1.33 billion
 
