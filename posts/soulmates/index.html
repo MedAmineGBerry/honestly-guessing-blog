@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f96623b7431b33eee32bf50e5e7db9a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-275ea92fec2332d09817369fdcce4fd0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -201,6 +201,17 @@ ul.task-list li input[type="checkbox"] {
 <p>A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. One soul mate in 1.3 billion cannot produce that.</p>
 <p>So I turned the question around. What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.</p>
 <p>Take a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.</p>
+<p>Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider to any age.</p>
+<figure class="lives figure" id="lives">
+<canvas role="img" aria-label="One thousand dots, one for each life. At age 18, 569 are lit. At age 30, 967 are lit. At age 60, 994 are lit."></canvas>
+<div class="lives-controls">
+<button type="button" class="label">Play</button>
+<label>Age <output data-age="">18</output> <input type="range" min="18" max="60" value="18" aria-label="Age"></label>
+</div>
+<p class="lives-count"><span data-lit="">569</span> of 1,000 have had a partner. With one soul mate each, the expected number who have found theirs is 0.</p>
+<figcaption>Each dot is one life. A dot lights up once that person has had a partner. The count at every age is what the fitted model gives: 569 at 18, 967 at 30 and 994 at 60.</figcaption>
+</figure>
+<script src="lives.js"></script>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/partners.png" class="img-fluid figure-img" alt="Observed shares rise from 81% at 18 to 24 to more than 99% at 50 to 60. The solid model line follows them closely. The dotted line starts too low at 68%."></p>
@@ -217,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 <iframe src="deck.html" title="The talk deck: Is there really only one?" loading="lazy">
 </iframe>
 </div>
-<p>The repository also holds a small demo that plays out 1,000 lives under both rules. In a typical country, 973 of 1,000 lives had met a possible partner by age 30, and none had found their one soul mate.</p>
+<p>The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.</p>
 </section>
 <section id="what-this-leaves-out" class="level2">
 <h2 class="anchored" data-anchor-id="what-this-leaves-out">What this leaves out</h2>
