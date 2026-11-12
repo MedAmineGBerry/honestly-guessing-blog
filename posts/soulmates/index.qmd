@@ -1,7 +1,7 @@
 ---
 title: "Is there really only one?"
-subtitle: "Soul mates, measured with PyMC, four datasets and one stated guess."
-description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples tell a kinder story."
+subtitle: "I checked with four datasets and one guess."
+description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples point to about 14 possible partners."
 date: 2026-11-12
 opus: 1
 verdict: "About fourteen"
@@ -18,7 +18,7 @@ The saying goes that there is one person out there for you. I tested it with dat
 
 The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. He estimated the numbers. I wanted to measure them. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
-## The question, with small numbers first
+## Let's think about 4 people
 
 Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.
 
@@ -43,25 +43,25 @@ Play a few lives and watch the count settle near that number.
 
 Both results follow one pattern. Multiply the people you meet by the chance to recognize, and divide by the pool. Here that is 2 × 0.5 / 4 = 0.25.
 
-The model uses a more careful form of the same idea:
+The model uses this formula:
 
 ```
 P_find = 1 − (1 − p_recog / M) ^ N
 ```
 
-M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. This form treats every meeting as a separate try. With 4 people that changes the answer a little, to 0.23. With a pool of more than a billion, it is the same as N × p_recog / M. So the whole project comes down to three numbers.
+M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. This form treats every meeting as a separate try. With 4 people that changes the answer a little, to 0.23. With a pool of more than a billion, it is the same as N × p_recog / M. So I need three numbers.
 
-## M: a pool of 1.33 billion
+## 1.33 billion people your age
 
 The premise says your soul mate is about your age. I took everyone alive in 2023 who is within 5 years of age 30. The UN World Population Prospects 2024 count them: 1,328,956,521 people.
 
-## N: the people you meet and talk to
+## How many people do you meet?
 
 This number took most of the work.
 
 In two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked "first time".
 
-One detail matters more than any other. The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.
+The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.
 
 Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.
 
@@ -73,7 +73,7 @@ Each country gets its own level, and the levels come from one shared distributio
 
 I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.
 
-## p_recog: the one guess
+## Would you recognize them?
 
 No data exists for the chance that two soul mates recognize each other. So I state my guess as a sentence: "I am 90% sure it lies between 0.3 and 0.9."
 
@@ -81,7 +81,7 @@ A tool called PreliZ turns the sentence into a curve of plausible values. Many c
 
 ![The guess as a curve. 90% of it lies between the two dashed lines.](img/guess.png){fig-alt="A histogram of plausible values for p_recog between 0 and 1, with dashed lines at 0.3 and 0.9."}
 
-## The odds
+## So what are the odds?
 
 Now the three numbers go into the formula. N averages about 6,850. That is higher than its middle value of 5,800, because a few very talkative countries pull the average up.
 
@@ -91,7 +91,7 @@ Now the three numbers go into the formula. N averages about 6,850. That is highe
 
 That is about 1 in 325,800. The 94% interval runs from 1 in 1.5 million to 1 in 115,000.
 
-The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate. It is rare, and it happens to someone.
+The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
 
 ## But almost everyone finds someone
 
@@ -120,7 +120,7 @@ Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider
 
 By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.
 
-One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date. Where you talk to people matters as much as how many.
+One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.
 
 ## The talk
 
@@ -132,7 +132,7 @@ This post is the written version of a talk. The deck has 20 pages. Click into it
 
 The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.
 
-## What this leaves out
+## What I left out
 
 - The contact diaries come from Europe between 2005 and 2012, and the couples from the US in 2017.
 - The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.
