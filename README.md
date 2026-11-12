@@ -8,7 +8,7 @@ When the site is switched on, it is at <https://medaminegberry.github.io/honestl
 
 | Op. | Saying | Verdict | Code |
 |---|---|---|---|
-| 1 | Is there really only one? | About fourteen | [soulmates](https://github.com/MedAmineGBerry/soulmates) |
+| 1 | Do we really have only one soul mate in the world? | About fourteen | [soulmates](https://github.com/MedAmineGBerry/soulmates) |
 
 ## Look at it on your machine
 
