@@ -32,9 +32,10 @@ $sleeves: (
 
 /*-- scss:rules --*/
 // The fonts are served from this site, so no reader's address goes to a font server.
-@font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-variable-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-variable-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/IBMPlexSans-400-normal.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
+// The path is relative to this file. Quarto copies the files next to the compiled stylesheet, so it works under any address.
+@font-face { font-family: "Fraunces"; src: url("fonts/Fraunces-variable-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("fonts/Fraunces-variable-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/IBMPlexSans-400-normal.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
 
 @mixin sleeve($c) { --s1: #{nth($c, 1)}; --s2: #{nth($c, 2)}; --s3: #{nth($c, 3)}; --on-s1: #{nth($c, 4)}; }
 // Mustard is the house colour, for pages that are not a post.

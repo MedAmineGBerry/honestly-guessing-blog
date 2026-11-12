@@ -9,12 +9,12 @@ This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start 
 | Topic | Decision |
 |---|---|
 | Tool | Quarto 1.11, installed in this folder through uv as the dev dependency `quarto-cli`. Nothing is installed on the system. |
-| Repository | `MedAmineGBerry.github.io`, a user site. The address is `https://medaminegberry.github.io`. |
+| Repository | `MedAmineGBerry/honestly-guessing-blog` on GitHub, a project site. The address is `https://medaminegberry.github.io/honestly-guessing-blog/`. The local folder is still named `MedAmineGBerry.github.io`. Every link and font path in the site is relative, so the site works under any address. |
 | Publishing | Quarto renders into `docs/`, and `docs/` is committed. GitHub Pages serves `main` and the folder `/docs`. No build runs on GitHub. |
 | Look | A record sleeve: cream paper, warm ink, three stripes under the site name and a round sticker that carries the verdict. The blog has its own look and does not copy the soul mates deck. Titles and text are set in Fraunces, small labels in IBM Plex Sans capitals. |
 | Colour | The paper and the ink never change. Each post picks one of six sleeve colours with `sleeve:` in its header: `mustard`, `sunset`, `teal`, `rose`, `blue` or `pastel`. Stripes, sticker and link underlines take that colour. Mustard is the house colour for pages that are not a post, and the colour of the first post. A new colour is one line in `theme.scss`. |
 | Dark mode | None. The cream paper is the identity. |
-| Fonts | Served from `fonts/` on this site. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
+| Fonts | The files live in `fonts/`. `theme.scss` points to them with a path relative to itself, and Quarto copies them next to the compiled stylesheet in `site_libs/bootstrap/fonts/`. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
 | Posts | One folder per post under `posts/`, with its images next to it. |
 | Code | Each project keeps its own repository. A post links to it and may embed a deck or charts from it. |
 
@@ -54,8 +54,8 @@ A new post is a new folder under `posts/` with an `index.qmd`. Its header takes 
 
 ## Going online, once
 
-1. Create an empty public repository named `MedAmineGBerry.github.io` on GitHub.
-2. Add it as the remote, commit and push `main`.
+1. The public repository `honestly-guessing-blog` exists on GitHub. It started with a README commit.
+2. Add it as the remote, pull its README commit once with `--allow-unrelated-histories`, then push `main`.
 3. In the repository settings under Pages, choose "Deploy from a branch", branch `main`, folder `/docs`.
 
 ## Open points
