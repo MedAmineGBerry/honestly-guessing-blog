@@ -1,0 +1,14 @@
+```{=html}
+<div class="shelf">
+<% for (const item of items) { %>
+<a class="record sleeve-<%= item.sleeve || 'mustard' %>" href="<%- item.path %>">
+<span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span>
+<span>
+<span class="record-title"><%= item.title %></span>
+<span class="label"><% if (item.opus) { %>Op. <%= item.opus %> / <% } %><%= item.date %><% if (item['reading-time']) { %> / <%= item['reading-time'] %><% } %></span>
+</span>
+<% if (item.verdict) { %><span class="sticker"><span class="label">The verdict</span><span class="sticker-text"><%= item.verdict %></span></span><% } %>
+</a>
+<% } %>
+</div>
+```

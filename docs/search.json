@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Honestly Guessing takes a saying that everybody knows and checks it against data. Each post states its guesses in the open, shows where every number comes from, and links to code you can run.\nThe code for each post has its own repository on GitHub."
+  },
+  {
+    "objectID": "posts/soulmates/index.html",
+    "href": "posts/soulmates/index.html",
+    "title": "Is there really only one?",
+    "section": "",
+    "text": "The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples points to a kinder rule. About 14 of the people your own age you will talk to could become a partner.\nThe idea comes from the soul mates chapter of Randall Munroe’s book What If?. He estimated the numbers. I wanted to measure them. All the code is in the soulmates repository."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#the-question-with-small-numbers-first",
+    "href": "posts/soulmates/index.html#the-question-with-small-numbers-first",
+    "title": "Is there really only one?",
+    "section": "The question, with small numbers first",
+    "text": "The question, with small numbers first\nSay your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.\nNow say you only recognize them half of the time. Each meeting then succeeds with chance (1/4) × 0.5 = 1/8. The chance that at least one of your 2 meetings succeeds is 1 − (7/8)² = 15/64, about 0.23.\nThe real calculation is the same, with bigger numbers:\nP_find = 1 − (1 − p_recog / M) ^ N\nM is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other. When the result is tiny, it is close to N × p_recog / M. So the whole project comes down to three numbers."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#m-a-pool-of-1.33-billion",
+    "href": "posts/soulmates/index.html#m-a-pool-of-1.33-billion",
+    "title": "Is there really only one?",
+    "section": "M: a pool of 1.33 billion",
+    "text": "M: a pool of 1.33 billion\nThe premise says your soul mate is about your age. I took everyone alive in 2023 who is within 5 years of age 30. The UN World Population Prospects 2024 count them: 1,328,956,521 people."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#n-the-people-you-meet-and-talk-to",
+    "href": "posts/soulmates/index.html#n-the-people-you-meet-and-talk-to",
+    "title": "Is there really only one?",
+    "section": "N: the people you meet and talk to",
+    "text": "N: the people you meet and talk to\nThis number took most of the work.\nIn two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked “first time”.\nOne detail matters more than any other. The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.\nHere is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.\nThe model does the same sum with more care. The rate peaks in the twenties. Weekend days bring 1.23 times as many new people. And countries differ a lot.\n\n\n\nNew people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.\n\n\nEach country gets its own level, and the levels come from one shared distribution. Countries with few diaries borrow strength from the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000.\nI cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#p_recog-the-one-guess",
+    "href": "posts/soulmates/index.html#p_recog-the-one-guess",
+    "title": "Is there really only one?",
+    "section": "p_recog: the one guess",
+    "text": "p_recog: the one guess\nNo data exists for the chance that two soul mates recognize each other. So I state my guess as a sentence: “I am 90% sure it lies between 0.3 and 0.9.”\nA tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one, so I add no certainty I do not have. The curve has an average of 0.596.\n\n\n\nThe guess as a curve. 90% of it lies between the two dashed lines."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#the-odds",
+    "href": "posts/soulmates/index.html#the-odds",
+    "title": "Is there really only one?",
+    "section": "The odds",
+    "text": "The odds\nNow the three numbers go into the formula. N averages about 6,850. That is higher than its middle value of 5,800, because a few very talkative countries pull the average up.\n6,850 × 0.596 / 1,328,956,521 = 0.00000307\nThat is about 1 in 325,800. The 94% interval runs from 1 in 1.5 million to 1 in 115,000.\nThe best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate. It is rare, and it happens to someone."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#but-almost-everyone-finds-someone",
+    "href": "posts/soulmates/index.html#but-almost-everyone-finds-someone",
+    "title": "Is there really only one?",
+    "section": "But almost everyone finds someone",
+    "text": "But almost everyone finds someone\nA US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. One soul mate in 1.3 billion cannot produce that.\nSo I turned the question around. What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.\nTake a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.\n\n\n\nShare of people who ever had a partner, by age. The dots are the survey. The solid line lets people differ in how many others they meet. The dotted line gives everyone the same number.\n\n\nBy age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.\nOne cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date. Where you talk to people matters as much as how many."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#the-talk",
+    "href": "posts/soulmates/index.html#the-talk",
+    "title": "Is there really only one?",
+    "section": "The talk",
+    "text": "The talk\nThis post is the written version of a talk. The deck has 20 pages. Click into it and use the arrow keys, or open it in its own tab.\n\n\n\n\nThe repository also holds a small demo that plays out 1,000 lives under both rules. In a typical country, 973 of 1,000 lives had met a possible partner by age 30, and none had found their one soul mate."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#what-this-leaves-out",
+    "href": "posts/soulmates/index.html#what-this-leaves-out",
+    "title": "Is there really only one?",
+    "section": "What this leaves out",
+    "text": "What this leaves out\n\nThe contact diaries come from Europe between 2005 and 2012, and the couples from the US in 2017.\nThe diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.\nThe chance of recognizing each other is a guess. It drives most of the uncertainty in the soul mate odds.\n“Had a partner” is a low bar. The 14 are people who could become a partner, which is less than a soul mate."
+  },
+  {
+    "objectID": "posts/soulmates/index.html#data-and-credits",
+    "href": "posts/soulmates/index.html#data-and-credits",
+    "title": "Is there really only one?",
+    "section": "Data and credits",
+    "text": "Data and credits\n\nPOLYMOD social contact data: Mossong et al. 2008, Zenodo record 3874557, licence CC BY-NC 4.0.\nSocial contact data for France: Béraud et al. 2015, Zenodo record 3886590, licence CC BY-NC-ND 4.0.\nUnited Nations, World Population Prospects 2024, licence CC BY 3.0 IGO.\nRosenfeld, Michael J., Reuben J. Thomas, and Sonia Hausen. 2023. How Couples Meet and Stay Together 2017-2020-2022 combined dataset. [Computer files]. Stanford, CA: Stanford University Libraries. https://data.stanford.edu/hcmst2017\nSpeed dating: Fisman, Iyengar, Kamenica and Simonson, 2006, Quarterly Journal of Economics.\nThe question: Randall Munroe, What If?, the chapter on soul mates.\nTools: PyMC, ArviZ, PreliZ, marimo and Quarto.\n\nWith exactly one soul mate you would almost never find them. The data says you meet about 14 people who could be the one, so go and talk to them."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Honestly Guessing",
+    "section": "",
+    "text": "Folk wisdom, tested with data and one stated guess at a time.\n\n\n\n\n\n\n\n\n\n\n\nIs there really only one?\nOp. 1 / November 2026 / 8 min\n\nThe verdictAbout fourteen\n\n\n\nNo matching items"
+  }
+]

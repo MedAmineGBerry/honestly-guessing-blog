@@ -1,0 +1,66 @@
+# Honestly Guessing: blog design
+
+A personal blog on GitHub Pages. Each post takes a saying, tests it with data and links to a repository with the code. The first post is the soul mates project.
+
+This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start with an underscore, and `docs/` holds the rendered site.
+
+## Decisions
+
+| Topic | Decision |
+|---|---|
+| Tool | Quarto 1.11, installed in this folder through uv as the dev dependency `quarto-cli`. Nothing is installed on the system. |
+| Repository | `MedAmineGBerry.github.io`, a user site. The address is `https://medaminegberry.github.io`. |
+| Publishing | Quarto renders into `docs/`, and `docs/` is committed. GitHub Pages serves `main` and the folder `/docs`. No build runs on GitHub. |
+| Look | A record sleeve: cream paper, warm ink, three stripes under the site name and a round sticker that carries the verdict. The blog has its own look and does not copy the soul mates deck. Titles and text are set in Fraunces, small labels in IBM Plex Sans capitals. |
+| Colour | The paper and the ink never change. Each post picks one of six sleeve colours with `sleeve:` in its header: `mustard`, `sunset`, `teal`, `rose`, `blue` or `pastel`. Stripes, sticker and link underlines take that colour. Mustard is the house colour for pages that are not a post, and the colour of the first post. A new colour is one line in `theme.scss`. |
+| Dark mode | None. The cream paper is the identity. |
+| Fonts | Served from `fonts/` on this site. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
+| Posts | One folder per post under `posts/`, with its images next to it. |
+| Code | Each project keeps its own repository. A post links to it and may embed a deck or charts from it. |
+
+## Files
+
+```
+_quarto.yml               # site config, output to docs/
+theme.scss                # paper, ink, the six sleeve colours, all rules
+listing.ejs               # home page: one row per post with stripes and sticker
+posts/title-block.html    # post header: title, Op. number, verdict sticker
+index.qmd                 # home: the list of posts
+about.qmd                 # what the blog is
+posts/_metadata.yml       # defaults for all posts
+posts/soulmates/index.qmd # first post
+posts/soulmates/img/      # four charts from the soulmates notebooks
+posts/soulmates/deck.html # a copy of talk/soulmates_pycon.html
+fonts/                    # three WOFF2 files: Fraunces normal and italic, IBM Plex Sans
+pyproject.toml, uv.lock   # the uv project that provides Quarto
+docs/                     # the rendered site
+```
+
+## Working on it
+
+Render the site:
+
+```bash
+uv run quarto render
+```
+
+Preview it with live reload:
+
+```bash
+uv run quarto preview
+```
+
+A new post is a new folder under `posts/` with an `index.qmd`. Its header takes three fields next to the title and the date. `opus` is the number of the post. `verdict` is two or three words for the sticker. `sleeve` is the colour. A Jupyter notebook can be a post too. Put the `.ipynb` in its folder and give it a title and a date in a first raw cell.
+
+## Going online, once
+
+1. Create an empty public repository named `MedAmineGBerry.github.io` on GitHub.
+2. Add it as the remote, commit and push `main`.
+3. In the repository settings under Pages, choose "Deploy from a branch", branch `main`, folder `/docs`.
+
+## Open points
+
+1. The post has no author line. The owner decides which name appears.
+2. The embedded deck still shows two placeholders, for the speaker name and the repository link.
+3. A site published from Germany may need an imprint. This is a legal question for the owner to check.
+4. The French contact data has a "no derivatives" licence. The post shows results computed from it and credits it. Whether a chart counts as a derivative is a question for the owner to check.

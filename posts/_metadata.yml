@@ -1,0 +1,5 @@
+title-block-banner: false
+toc-title: "On this page"
+date-format: "MMMM YYYY"
+template-partials:
+  - title-block.html   # the post header: title, Op. number and the verdict sticker

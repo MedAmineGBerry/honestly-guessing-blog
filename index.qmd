@@ -1,0 +1,14 @@
+---
+pagetitle: "Honestly Guessing"
+listing:
+  contents: posts
+  sort: "date desc"
+  template: listing.ejs
+  date-format: "MMMM YYYY"
+  fields: [title, date, reading-time]
+toc: false
+---
+
+::: {.tagline}
+Folk wisdom, tested with data and one stated guess at a time.
+:::

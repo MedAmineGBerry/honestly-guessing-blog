@@ -1,0 +1,8 @@
+---
+title: "About"
+toc: false
+---
+
+Honestly Guessing takes a saying that everybody knows and checks it against data. Each post states its guesses in the open, shows where every number comes from, and links to code you can run.
+
+The code for each post has its own repository on [GitHub](https://github.com/MedAmineGBerry).

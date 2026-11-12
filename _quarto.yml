@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs   # GitHub Pages serves this folder from the main branch
+  resources:
+    - "fonts/*.woff2"
+    - "posts/soulmates/deck.html"
+
+website:
+  title: "Honestly Guessing"
+  description: "Folk wisdom, tested with data and one stated guess at a time."
+  site-url: https://medaminegberry.github.io
+  navbar:
+    pinned: true   # the name and the stripes stay in place while the page scrolls
+    right:
+      - text: About
+        href: about.qmd
+      - icon: github
+        href: https://github.com/MedAmineGBerry
+        aria-label: GitHub
+
+format:
+  html:
+    theme: [default, theme.scss]   # the default theme loads no fonts from other servers
+    toc: true
+    link-external-newwindow: true
+    html-math-method: plain   # no maths library from another server; a post that needs one can switch it on
