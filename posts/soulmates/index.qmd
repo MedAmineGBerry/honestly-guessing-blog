@@ -3,7 +3,7 @@ title: "Do we really have only one soul mate in the world?"
 description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples point to about 14 possible partners."
 date: 2026-11-12
 opus: 1
-verdict: "About fourteen"
+verdict: "No, more like 14"
 sleeve: mustard
 resources:
   - lives.js
