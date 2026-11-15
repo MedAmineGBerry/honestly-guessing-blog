@@ -6,7 +6,7 @@ When the site is switched on, it is at <https://medaminegberry.github.io/honestl
 
 ## Posts
 
-| Op. | Saying | Verdict | Code |
+| Op. | Post | Verdict | Code |
 |---|---|---|---|
 | 1 | Do we really have only one soul mate in the world? | No, more like 14 | [soulmates](https://github.com/MedAmineGBerry/soulmates) |
 
@@ -28,7 +28,6 @@ The preview opens in the browser and reloads when a file changes.
 ```yaml
 ---
 title: "Do opposites attract?"
-subtitle: "One line on how it was measured."
 description: "Two sentences for search results and link previews."
 date: 2027-01-15
 opus: 2

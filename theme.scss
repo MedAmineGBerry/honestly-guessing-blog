@@ -73,8 +73,6 @@ nav[role="doc-toc"] h2 { @include label; color: $muted; }
 // Charts have a white background. Multiply turns the white into paper, like print.
 .quarto-figure img { mix-blend-mode: multiply; }
 figcaption { font-style: italic; font-size: .9rem; color: $muted; }
-.deck-frame { position: relative; padding-top: 56.25%; margin: 1.2rem 0 .4rem; }
-.deck-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 1px solid $ink; }
 
 // The round sticker that carries the verdict.
 .sticker {

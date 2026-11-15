@@ -13,9 +13,9 @@ image: img/countries.png
 image-alt: "New people of your own age met between 15 and 60, for nine European countries"
 ---
 
-The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples points to a kinder rule. About 14 of the people your own age you will talk to could become a partner.
+The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner.
 
-The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. He estimated the numbers. I wanted to measure them. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
+The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. I wanted to redo his calculation with real data. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
 ## Start with 4 people
 
@@ -77,9 +77,13 @@ Here is a rough check by hand. Adults write down about 0.35 new people of their 
 
 The model does the same sum with more care. The rate peaks in the twenties. Weekend days bring 1.23 times as many new people. And countries differ a lot.
 
+The model works like a weather forecast. In the morning you give rain a 30% chance. Then you see dark clouds and raise it to 70%. The model does the same. It starts from my rough guess for a number and corrects it with the diaries. For each number it returns 4,000 values that fit the data, and I report the range that holds 94% of them.
+
+I first ran the model on 6,000 made up diaries. I had set the numbers behind them myself, so I knew the true answer and could check that the model gets close to it.
+
 ![New people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.](img/countries.png){fig-alt="A dot for each of nine countries with an interval line. Italy and the Netherlands are highest, Germany is lowest."}
 
-Each country gets its own level, and the levels come from one shared distribution. Countries with few diaries borrow strength from the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000.
+Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.
 
 I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.
 
@@ -109,15 +113,17 @@ P_find = -np.expm1(N * np.log1p(-p_recog / M))
 
 It is the same formula, because any number a raised to the power N equals exp(N × log a).
 
-The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
+The best case is Italy, the most talkative country. With my guess for recognition the odds there are 1 in 231,900, and with certain recognition 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
 
 ## But almost everyone finds someone
 
-A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. One soul mate in 1.3 billion cannot produce that.
+A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. With one soul mate in 1.3 billion, almost nobody would have had a partner.
 
-So I turned the question around. What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.
+What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.
 
 Take a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
+
+In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group. With k it gives 78%.
 
 Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider to any age.
 
@@ -138,17 +144,9 @@ Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider
 
 By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.
 
-One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.
+A study of speed dating at Columbia University gives a cross check. Both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.
 
-## The talk
-
-This post is the written version of a talk. The deck has 20 pages. Click into it and use the arrow keys, or [open it in its own tab](deck.html).
-
-::: {.deck-frame}
-<iframe src="deck.html" title="The talk deck: Do we really have only one soul mate in the world?" loading="lazy"></iframe>
-:::
-
-The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.
+The repository also has a small demo that plays out 1,000 random lives. In one run, 973 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 782 in Germany. Nobody found their one soul mate in any of the three runs. You start it with `uv run marimo run demo/roulette.py`.
 
 ## What I left out
 
@@ -167,4 +165,4 @@ The repository also holds a small demo that plays out 1,000 random lives under b
 - The question: Randall Munroe, *What If?*, the chapter on soul mates.
 - Tools: PyMC, ArviZ, PreliZ, marimo and Quarto.
 
-With exactly one soul mate you would almost never find them. The data says you meet about 14 people who could be the one, so go and talk to them.
+You will meet about 14 people who could be the one, so go and talk to them.

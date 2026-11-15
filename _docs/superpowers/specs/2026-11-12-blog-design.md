@@ -18,7 +18,8 @@ This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start 
 | Fonts | The files live in `fonts/`. `theme.scss` points to them with a path relative to itself, and Quarto copies them next to the compiled stylesheet in `site_libs/bootstrap/fonts/`. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
 | Posts | One folder per post under `posts/`, with its images next to it. |
 | Animations | A post mixes text with small animations, about one per idea. Each is a plain script in the post's folder, with no library and nothing from other servers. It takes its colour from the sleeve, starts on a button, has a slider, and hides the button for readers who switched motion off. The first one is `posts/soulmates/lives.js`. |
-| Code | Each project keeps its own repository. A post links to it and may embed a deck or charts from it. |
+| Code | Each project keeps its own repository. A post links to it and may show charts from it. |
+| Talks | The slides of a talk are not published on the blog. They stay in the project repository until the talk has been given, so the blog does not give the talk away. |
 
 ## Files
 
@@ -32,7 +33,6 @@ about.qmd                 # what the blog is
 posts/_metadata.yml       # defaults for all posts
 posts/soulmates/index.qmd # first post
 posts/soulmates/img/      # four charts from the soulmates notebooks
-posts/soulmates/deck.html # a copy of talk/soulmates_pycon.html
 fonts/                    # three WOFF2 files: Fraunces normal and italic, IBM Plex Sans
 pyproject.toml, uv.lock   # the uv project that provides Quarto
 docs/                     # the rendered site, not committed
@@ -63,6 +63,5 @@ A new post is a new folder under `posts/` with an `index.qmd`. Its header takes 
 ## Open points
 
 1. The post has no author line. The owner decides which name appears.
-2. The embedded deck still shows two placeholders, for the speaker name and the repository link.
-3. A site published from Germany may need an imprint. This is a legal question for the owner to check.
-4. The French contact data has a "no derivatives" licence. The post shows results computed from it and credits it. Whether a chart counts as a derivative is a question for the owner to check.
+2. A site published from Germany may need an imprint. This is a legal question for the owner to check.
+3. The French contact data has a "no derivatives" licence. The post shows results computed from it and credits it. Whether a chart counts as a derivative is a question for the owner to check.
