@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-803e3de4835bbac1c310467370b2da81.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d1aeee990322e3792bdd6d1c7cd3c2ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -162,7 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#would-you-recognize-them" id="toc-would-you-recognize-them" class="nav-link" data-scroll-target="#would-you-recognize-them">Would you recognize them?</a></li>
   <li><a href="#so-what-are-the-odds" id="toc-so-what-are-the-odds" class="nav-link" data-scroll-target="#so-what-are-the-odds">So what are the odds?</a></li>
   <li><a href="#but-almost-everyone-finds-someone" id="toc-but-almost-everyone-finds-someone" class="nav-link" data-scroll-target="#but-almost-everyone-finds-someone">But almost everyone finds someone</a></li>
-  <li><a href="#the-talk" id="toc-the-talk" class="nav-link" data-scroll-target="#the-talk">The talk</a></li>
   <li><a href="#what-i-left-out" id="toc-what-i-left-out" class="nav-link" data-scroll-target="#what-i-left-out">What I left out</a></li>
   <li><a href="#data-and-credits" id="toc-data-and-credits" class="nav-link" data-scroll-target="#data-and-credits">Data and credits</a></li>
   </ul>
@@ -182,8 +181,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples points to a kinder rule. About 14 of the people your own age you will talk to could become a partner.</p>
-<p>The idea comes from the soul mates chapter of Randall Munroe’s book <em>What If?</em>. He estimated the numbers. I wanted to measure them. All the code is in the <a href="https://github.com/MedAmineGBerry/soulmates">soulmates repository</a>.</p>
+<p>The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner.</p>
+<p>The idea comes from the soul mates chapter of Randall Munroe’s book <em>What If?</em>. I wanted to redo his calculation with real data. All the code is in the <a href="https://github.com/MedAmineGBerry/soulmates">soulmates repository</a>.</p>
 <section id="start-with-4-people" class="level2">
 <h2 class="anchored" data-anchor-id="start-with-4-people">Start with 4 people</h2>
 <p>Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.</p>
@@ -226,13 +225,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.</p>
 <p>Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.</p>
 <p>The model does the same sum with more care. The rate peaks in the twenties. Weekend days bring 1.23 times as many new people. And countries differ a lot.</p>
+<p>The model works like a weather forecast. In the morning you give rain a 30% chance. Then you see dark clouds and raise it to 70%. The model does the same. It starts from my rough guess for a number and corrects it with the diaries. For each number it returns 4,000 values that fit the data, and I report the range that holds 94% of them.</p>
+<p>I first ran the model on 6,000 made up diaries. I had set the numbers behind them myself, so I knew the true answer and could check that the model gets close to it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/countries.png" class="img-fluid figure-img" alt="A dot for each of nine countries with an interval line. Italy and the Netherlands are highest, Germany is lowest."></p>
 <figcaption>New people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.</figcaption>
 </figure>
 </div>
-<p>Each country gets its own level, and the levels come from one shared distribution. Countries with few diaries borrow strength from the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000.</p>
+<p>Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.</p>
 <p>I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.</p>
 </section>
 <section id="would-you-recognize-them" class="level2">
@@ -254,13 +255,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>One detail for anyone who runs the code. Call the chance per meeting x. Here x = 0.596 / 1,328,956,521 = 0.000000000448. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999995515279, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>P_find <span class="op">=</span> <span class="op">-</span>np.expm1(N <span class="op">*</span> np.log1p(<span class="op">-</span>p_recog <span class="op">/</span> M))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It is the same formula, because any number a raised to the power N equals exp(N × log a).</p>
-<p>The best case I can defend is Italy, the most talkative country, with certain recognition: 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.</p>
+<p>The best case is Italy, the most talkative country. With my guess for recognition the odds there are 1 in 231,900, and with certain recognition 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.</p>
 </section>
 <section id="but-almost-everyone-finds-someone" class="level2">
 <h2 class="anchored" data-anchor-id="but-almost-everyone-finds-someone">But almost everyone finds someone</h2>
-<p>A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. One soul mate in 1.3 billion cannot produce that.</p>
-<p>So I turned the question around. What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.</p>
+<p>A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. With one soul mate in 1.3 billion, almost nobody would have had a partner.</p>
+<p>What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.</p>
 <p>Take a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.</p>
+<p>In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group. With k it gives 78%.</p>
 <p>Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider to any age.</p>
 <figure class="lives figure" id="lives">
 <canvas role="img" aria-label="One thousand dots, one for each life. At age 18, 569 are lit. At age 30, 967 are lit. At age 60, 994 are lit."></canvas>
@@ -279,16 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.</p>
-<p>One cross check comes from a very different setting. In a study of speed dating at Columbia University, both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.</p>
-</section>
-<section id="the-talk" class="level2">
-<h2 class="anchored" data-anchor-id="the-talk">The talk</h2>
-<p>This post is the written version of a talk. The deck has 20 pages. Click into it and use the arrow keys, or <a href="deck.html">open it in its own tab</a>.</p>
-<div class="deck-frame">
-<iframe src="deck.html" title="The talk deck: Do we really have only one soul mate in the world?" loading="lazy">
-</iframe>
-</div>
-<p>The repository also holds a small demo that plays out 1,000 random lives under both rules. In one run for a typical country, 973 of 1,000 lives had met a possible partner by age 30. None had found their one soul mate.</p>
+<p>A study of speed dating at Columbia University gives a cross check. Both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.</p>
+<p>The repository also has a small demo that plays out 1,000 random lives. In one run, 973 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 782 in Germany. Nobody found their one soul mate in any of the three runs. You start it with <code>uv run marimo run demo/roulette.py</code>.</p>
 </section>
 <section id="what-i-left-out" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-left-out">What I left out</h2>
@@ -310,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The question: Randall Munroe, <em>What If?</em>, the chapter on soul mates.</li>
 <li>Tools: PyMC, ArviZ, PreliZ, marimo and Quarto.</li>
 </ul>
-<p>With exactly one soul mate you would almost never find them. The data says you meet about 14 people who could be the one, so go and talk to them.</p>
+<p>You will meet about 14 people who could be the one, so go and talk to them.</p>
 
 
 </section>
