@@ -109,6 +109,21 @@ p.subtitle { font-style: italic; font-size: 1.15rem; line-height: 1.4; margin: .
 .record:not(:first-child) .sticker .label { display: none; }
 .record:not(:first-child) .sticker-text { font-size: .85rem; margin: 0; }
 
+// Charts are drawn as part of the page (see posts/soulmates/charts.py), so they use the
+// page's typeface and the sleeve colour of the post.
+.chart-fig { margin: 2.2rem 0; }
+.chart { display: block; width: 100%; height: auto; color: $ink; }
+.chart text { font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: currentColor; }
+.chart .name { font-family: "Fraunces", Georgia, serif; font-size: 15px; }
+.chart .quiet { fill: $muted; }
+.chart .line { fill: none; stroke: currentColor; stroke-width: 2; }
+.chart .dots { fill: none; stroke: currentColor; stroke-width: 2; stroke-dasharray: 1 6; stroke-linecap: round; }
+.chart .dash { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 5 5; opacity: .6; }
+.chart .thin { stroke: currentColor; stroke-width: 1; opacity: .16; }
+.chart .dot { fill: var(--s1); stroke: currentColor; stroke-width: 1.5; }
+.chart .tint { fill: var(--s1); opacity: .4; }
+.chart .hit { fill: transparent; }
+
 // A part of the text the reader can open, for detail that would slow the main line down.
 details.more { margin: 1.6rem 0; padding: .7rem 0; border-top: 1px solid $ink; border-bottom: 1px solid $ink; }
 details.more summary { cursor: pointer; font-weight: 500; }

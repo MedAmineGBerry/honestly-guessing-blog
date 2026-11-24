@@ -13,9 +13,9 @@ image: img/card.png   # the picture a shared link shows
 image-alt: "The title of the post on cream paper, with a round sticker that says: No, more like 14"
 ---
 
-The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner.
+As I was traveling home, I found myself reading Randall Munroe's book *What If?* and stumbled upon one of my favourite chapters, the one about each of us having only one soul mate. Throughout the chapter, he takes this old saying apart and shows how implausible it sounds. Inspired by his tenacity to give the world some hope of being with someone, I decided to do the same and take a data driven approach to... hope, I guess?
 
-The idea comes from the soul mates chapter of Randall Munroe's book *What If?*. I wanted to redo his calculation with real data. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
+If the saying were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
 ## Start with 4 people
 
@@ -76,7 +76,7 @@ The premise says your soul mate is about your age. I took everyone alive in 2023
 
 In two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked "first time".
 
-The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.
+The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them.
 
 Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.
 
@@ -86,9 +86,13 @@ I first ran the model on 6,000 made up diaries. I had set the numbers behind the
 
 On the real diaries, the rate peaks in the twenties. Weekend days bring 1.23 times as many new people.
 
-![New people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.](img/countries.png){fig-alt="A dot for each of nine countries with an interval line. Italy and the Netherlands are highest, Germany is lowest."}
+```{=html}
 
-Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.
+{{< include _chart_countries.html >}}
+
+```
+
+The surveys were run country by country, so countries are the groups in my model. With other data the groups could be cities or professions. Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.
 
 I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.
 
@@ -98,7 +102,11 @@ No data exists for the chance that two soul mates recognize each other. So I sta
 
 A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one. The curve has an average of 0.596.
 
-![The guess as a curve. 90% of it lies between the two dashed lines.](img/guess.png){fig-alt="A histogram of plausible values for p_recog between 0 and 1, with dashed lines at 0.3 and 0.9."}
+```{=html}
+
+{{< include _chart_guess.html >}}
+
+```
 
 ## So what are the odds?
 
@@ -118,7 +126,7 @@ A US survey of couples, How Couples Meet and Stay Together, shows that 96% of pe
 
 What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.
 
-By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
+By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. This seems too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
 
 In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group. With k it gives 78%.
 
@@ -137,7 +145,11 @@ Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider
 <script src="lives.js"></script>
 ```
 
-![Share of people who ever had a partner, by age. The dots are the survey. The solid line lets people differ in how many others they meet. The dotted line gives everyone the same number.](img/partners.png){fig-alt="Observed shares rise from 81% at 18 to 24 to more than 99% at 50 to 60. The solid model line follows them closely. The dotted line starts too low at 68%."}
+```{=html}
+
+{{< include _chart_partners.html >}}
+
+```
 
 By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.
 
@@ -151,6 +163,7 @@ The repository also has a small demo that plays out 1,000 random lives. In one r
 - The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.
 - The chance of recognizing each other is a guess. It drives most of the uncertainty in the soul mate odds.
 - "Had a partner" is a low bar. The 14 are people who could become a partner, which is less than a soul mate.
+- The pool counts everyone your age, whatever their gender and whoever they are attracted to. If only half of them could be your soul mate, only half of the people you meet would count too, so the odds stay about the same.
 
 ## If you run the code
 

@@ -17,6 +17,7 @@ This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start 
 | Dark mode | None. The cream paper is the identity. |
 | Fonts | The files live in `fonts/`. `theme.scss` points to them with a path relative to itself, and Quarto copies them next to the compiled stylesheet in `site_libs/bootstrap/fonts/`. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
 | Posts | One folder per post under `posts/`, with its images next to it. |
+| Charts | A chart is drawn as part of the page, so it uses the page's typeface and the sleeve colour of its post. `posts/soulmates/charts.py` draws the three charts of the first post from `chart_data.json`, which holds the numbers taken from the models. Hovering over a mark shows its numbers. The rules for all charts, with the five chart colours, are in `_docs/chart-style.md`. |
 | Animations | A post mixes text with small animations, about one per idea. Each is a plain script in the post's folder, with no library and nothing from other servers. It takes its colour from the sleeve, starts on a button, has a slider, and hides the button for readers who switched motion off. The first one is `posts/soulmates/lives.js`. |
 | Code | Each project keeps its own repository. A post links to it and may show charts from it. |
 | Talks | The slides of a talk are not published on the blog. They stay in a private folder of the project, outside git, until the talk has been given. |

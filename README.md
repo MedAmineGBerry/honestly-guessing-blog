@@ -83,7 +83,7 @@ If the site does not react, look at Settings, then Pages, on GitHub. The branch 
 | `fonts/` | Fraunces and IBM Plex Sans, served from this site. |
 | `docs/` | The rendered site on your machine. It is not committed. |
 
-The pages load nothing from other servers. The design decisions are written down in `_docs/superpowers/specs/2026-11-12-blog-design.md`.
+The pages load nothing from other servers. The design decisions are written down in `_docs/superpowers/specs/2026-11-12-blog-design.md`. The rules for charts are in `_docs/chart-style.md`.
 
 ## Data and licences
 

@@ -1,0 +1,116 @@
+{
+ "source": "Computed on 2026-11-24 from the soulmates repository with the seeds of notebooks 02 and 03. Ranges are the 3rd to 97th percentile of the posterior draws.",
+ "countries": [
+  {
+   "name": "Italy",
+   "mean": 9617,
+   "low": 7775,
+   "high": 11827
+  },
+  {
+   "name": "Netherlands",
+   "mean": 8778,
+   "low": 6047,
+   "high": 12488
+  },
+  {
+   "name": "Finland",
+   "mean": 6767,
+   "low": 5503,
+   "high": 8265
+  },
+  {
+   "name": "France",
+   "mean": 6642,
+   "low": 5805,
+   "high": 7551
+  },
+  {
+   "name": "Luxembourg",
+   "mean": 6623,
+   "low": 5433,
+   "high": 8065
+  },
+  {
+   "name": "Belgium",
+   "mean": 6337,
+   "low": 5028,
+   "high": 7955
+  },
+  {
+   "name": "Poland",
+   "mean": 5318,
+   "low": 4323,
+   "high": 6493
+  },
+  {
+   "name": "Great Britain",
+   "mean": 5105,
+   "low": 4107,
+   "high": 6250
+  },
+  {
+   "name": "Germany",
+   "mean": 1777,
+   "low": 1363,
+   "high": 2266
+  }
+ ],
+ "typical": 5786,
+ "guess": {
+  "alpha": 3.6104,
+  "beta": 2.475,
+  "low": 0.3,
+  "high": 0.9
+ },
+ "partners": [
+  {
+   "ages": "18 to 24",
+   "people": 254,
+   "survey": 0.8071,
+   "survey_weighted": 0.7678,
+   "people_differ": 0.7845,
+   "everyone_same": 0.6775
+  },
+  {
+   "ages": "25 to 29",
+   "people": 410,
+   "survey": 0.9244,
+   "survey_weighted": 0.9097,
+   "people_differ": 0.9466,
+   "everyone_same": 0.9313
+  },
+  {
+   "ages": "30 to 34",
+   "people": 251,
+   "survey": 0.988,
+   "survey_weighted": 0.9849,
+   "people_differ": 0.9732,
+   "everyone_same": 0.9775
+  },
+  {
+   "ages": "35 to 39",
+   "people": 272,
+   "survey": 0.9743,
+   "survey_weighted": 0.9701,
+   "people_differ": 0.9826,
+   "everyone_same": 0.9904
+  },
+  {
+   "ages": "40 to 49",
+   "people": 505,
+   "survey": 0.9901,
+   "survey_weighted": 0.9898,
+   "people_differ": 0.9889,
+   "everyone_same": 0.9965
+  },
+  {
+   "ages": "50 to 60",
+   "people": 828,
+   "survey": 0.9964,
+   "survey_weighted": 0.9961,
+   "people_differ": 0.9929,
+   "everyone_same": 0.999
+  }
+ ]
+}
