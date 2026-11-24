@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-48958029e00679e9105ad42b7a012569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4bd9ce2d8bb358b04d3ed9f4d47143b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -195,8 +195,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner.</p>
-<p>The idea comes from the soul mates chapter of Randall Munroe’s book <em>What If?</em>. I wanted to redo his calculation with real data. All the code is in the <a href="https://github.com/MedAmineGBerry/soulmates">soulmates repository</a>.</p>
+<p>As I was traveling home, I found myself reading Randall Munroe’s book <em>What If?</em> and stumbled upon one of my favourite chapters, the one about each of us having only one soul mate. Throughout the chapter, he takes this old saying apart and shows how implausible it sounds. Inspired by his tenacity to give the world some hope of being with someone, I decided to do the same and take a data driven approach to… hope, I guess?</p>
+<p>If the saying were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner. All the code is in the <a href="https://github.com/MedAmineGBerry/soulmates">soulmates repository</a>.</p>
 <section id="start-with-4-people" class="level2">
 <h2 class="anchored" data-anchor-id="start-with-4-people">Start with 4 people</h2>
 <p>Say your soul mate is one random person in a pool of 4 people, and in your life you meet 2 of them. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.</p>
@@ -241,30 +241,112 @@ How to read the formula, step by step
 <section id="how-many-people-do-you-meet" class="level2">
 <h2 class="anchored" data-anchor-id="how-many-people-do-you-meet">How many people do you meet?</h2>
 <p>In two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked “first time”.</p>
-<p>The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.</p>
+<p>The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them.</p>
 <p>Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.</p>
 <p>A model does the same sum with more care. It works like a weather forecast. In the morning you give rain a 30% chance. Then you see dark clouds and raise it to 70%. The model starts from my rough guess for a number and corrects it with the diaries. For each number it returns 4,000 values that fit the data, and I report the range that holds 94% of them.</p>
 <p>I first ran the model on 6,000 made up diaries. I had set the numbers behind them myself, so I knew the true answer and could check that the model gets close to it.</p>
 <p>On the real diaries, the rate peaks in the twenties. Weekend days bring 1.23 times as many new people.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/countries.png" class="img-fluid figure-img" alt="A dot for each of nine countries with an interval line. Italy and the Netherlands are highest, Germany is lowest."></p>
+
+<figure class="chart-fig figure">
+<svg class="chart" viewbox="0 0 560 389" role="img" aria-label="A dot for each of nine countries with a line for its range. Italy is highest with 9,617 people, Germany is lowest with 1,777.">
+<line class="thin" x1="146.0" y1="30" x2="146.0" y2="335"></line>
+<text class="quiet" x="146.0" y="354" text-anchor="middle">0</text>
+<line class="thin" x1="267.2" y1="30" x2="267.2" y2="335"></line>
+<text class="quiet" x="267.2" y="354" text-anchor="middle">4,000</text>
+<line class="thin" x1="388.5" y1="30" x2="388.5" y2="335"></line>
+<text class="quiet" x="388.5" y="354" text-anchor="middle">8,000</text>
+<line class="thin" x1="509.7" y1="30" x2="509.7" y2="335"></line>
+<text class="quiet" x="509.7" y="354" text-anchor="middle">12,000</text>
+<line class="dash" x1="321.4" y1="24" x2="321.4" y2="335"></line>
+<text class="quiet" x="321.4" y="15" text-anchor="middle">a typical country</text>
+<g><title>Italy: 9,617 people, range 7,775 to 11,827</title>
+<rect class="hit" x="0" y="29.0" width="560" height="34"></rect>
+<text class="name" x="132" y="51" text-anchor="end">Italy</text>
+<line class="line" x1="381.6" y1="46" x2="504.4" y2="46"></line>
+<circle class="dot" cx="437.5" cy="46" r="5.5"></circle>
+<text x="513.4" y="50.5">9,617</text>
+</g>
+<g><title>Netherlands: 8,778 people, range 6,047 to 12,488</title>
+<rect class="hit" x="0" y="63.0" width="560" height="34"></rect>
+<text class="name" x="132" y="85" text-anchor="end">Netherlands</text>
+<line class="line" x1="329.3" y1="80" x2="524.5" y2="80"></line>
+<circle class="dot" cx="412.0" cy="80" r="5.5"></circle>
+</g>
+<g><title>Finland: 6,767 people, range 5,503 to 8,265</title>
+<rect class="hit" x="0" y="97.0" width="560" height="34"></rect>
+<text class="name" x="132" y="119" text-anchor="end">Finland</text>
+<line class="line" x1="312.8" y1="114" x2="396.5" y2="114"></line>
+<circle class="dot" cx="351.1" cy="114" r="5.5"></circle>
+</g>
+<g><title>France: 6,642 people, range 5,805 to 7,551</title>
+<rect class="hit" x="0" y="131.0" width="560" height="34"></rect>
+<text class="name" x="132" y="153" text-anchor="end">France</text>
+<line class="line" x1="321.9" y1="148" x2="374.9" y2="148"></line>
+<circle class="dot" cx="347.3" cy="148" r="5.5"></circle>
+</g>
+<g><title>Luxembourg: 6,623 people, range 5,433 to 8,065</title>
+<rect class="hit" x="0" y="165.0" width="560" height="34"></rect>
+<text class="name" x="132" y="187" text-anchor="end">Luxembourg</text>
+<line class="line" x1="310.7" y1="182" x2="390.4" y2="182"></line>
+<circle class="dot" cx="346.7" cy="182" r="5.5"></circle>
+</g>
+<g><title>Belgium: 6,337 people, range 5,028 to 7,955</title>
+<rect class="hit" x="0" y="199.0" width="560" height="34"></rect>
+<text class="name" x="132" y="221" text-anchor="end">Belgium</text>
+<line class="line" x1="298.4" y1="216" x2="387.1" y2="216"></line>
+<circle class="dot" cx="338.1" cy="216" r="5.5"></circle>
+</g>
+<g><title>Poland: 5,318 people, range 4,323 to 6,493</title>
+<rect class="hit" x="0" y="233.0" width="560" height="34"></rect>
+<text class="name" x="132" y="255" text-anchor="end">Poland</text>
+<line class="line" x1="277.0" y1="250" x2="342.8" y2="250"></line>
+<circle class="dot" cx="307.2" cy="250" r="5.5"></circle>
+</g>
+<g><title>Great Britain: 5,105 people, range 4,107 to 6,250</title>
+<rect class="hit" x="0" y="267.0" width="560" height="34"></rect>
+<text class="name" x="132" y="289" text-anchor="end">Great Britain</text>
+<line class="line" x1="270.5" y1="284" x2="335.4" y2="284"></line>
+<circle class="dot" cx="300.7" cy="284" r="5.5"></circle>
+</g>
+<g><title>Germany: 1,777 people, range 1,363 to 2,266</title>
+<rect class="hit" x="0" y="301.0" width="560" height="34"></rect>
+<text class="name" x="132" y="323" text-anchor="end">Germany</text>
+<line class="line" x1="187.3" y1="318" x2="214.7" y2="318"></line>
+<circle class="dot" cx="199.9" cy="318" r="5.5"></circle>
+<text x="223.7" y="322.5">1,777</text>
+</g>
+<text class="quiet" x="343.0" y="379" text-anchor="middle">new people of your own age you talk to between 15 and 60</text>
+</svg>
 <figcaption>New people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.</figcaption>
 </figure>
-</div>
-<p>Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.</p>
+
+
+<p>The surveys were run country by country, so countries are the groups in my model. With other data the groups could be cities or professions. Each country gets its own level, and the levels come from one shared distribution. A country with few diaries is pulled towards the average of the others. The same distribution tells me how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000. You have met 60% of them by age 35.</p>
 <p>I cannot tell culture from survey method here. Four countries, Germany among them, asked for an estimate of work contacts instead of a list. Part of the gap may come from that.</p>
 </section>
 <section id="would-you-recognize-them" class="level2">
 <h2 class="anchored" data-anchor-id="would-you-recognize-them">Would you recognize them?</h2>
 <p>No data exists for the chance that two soul mates recognize each other. So I state my guess as a sentence: “I am 90% sure it lies between 0.3 and 0.9.”</p>
 <p>A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one. The curve has an average of 0.596.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/guess.png" class="img-fluid figure-img" alt="A histogram of plausible values for p_recog between 0 and 1, with dashed lines at 0.3 and 0.9."></p>
+
+<figure class="chart-fig figure">
+<svg class="chart" viewbox="0 0 560 292" role="img" aria-label="A curve of plausible values between 0 and 1 with dashed lines at 0.3 and 0.9. The area between them is filled.">
+<polygon class="tint" points="180.0,236 180.0,161.5 182.5,159.0 185.0,156.5 187.5,154.0 190.0,151.5 192.5,148.9 195.0,146.4 197.5,143.8 200.0,141.3 202.5,138.7 205.0,136.1 207.5,133.5 210.0,130.9 212.5,128.3 215.0,125.7 217.5,123.1 220.0,120.5 222.5,117.9 225.0,115.3 227.5,112.7 230.0,110.2 232.5,107.6 235.0,105.1 237.5,102.6 240.0,100.1 242.5,97.6 245.0,95.1 247.5,92.7 250.0,90.3 252.5,87.9 255.0,85.5 257.5,83.2 260.0,80.9 262.5,78.6 265.0,76.4 267.5,74.2 270.0,72.0 272.5,69.9 275.0,67.8 277.5,65.8 280.0,63.8 282.5,61.9 285.0,60.0 287.5,58.2 290.0,56.4 292.5,54.7 295.0,53.0 297.5,51.4 300.0,49.9 302.5,48.4 305.0,47.0 307.5,45.6 310.0,44.3 312.5,43.1 315.0,42.0 317.5,40.9 320.0,39.9 322.5,39.0 325.0,38.1 327.5,37.3 330.0,36.6 332.5,36.0 335.0,35.5 337.5,35.0 340.0,34.6 342.5,34.3 345.0,34.1 347.5,34.0 350.0,34.0 352.5,34.1 355.0,34.2 357.5,34.5 360.0,34.8 362.5,35.2 365.0,35.8 367.5,36.4 370.0,37.1 372.5,37.9 375.0,38.8 377.5,39.8 380.0,40.9 382.5,42.2 385.0,43.5 387.5,44.9 390.0,46.4 392.5,48.0 395.0,49.7 397.5,51.5 400.0,53.4 402.5,55.4 405.0,57.5 407.5,59.7 410.0,62.0 412.5,64.5 415.0,67.0 417.5,69.6 420.0,72.3 422.5,75.1 425.0,78.0 427.5,80.9 430.0,84.0 432.5,87.2 435.0,90.4 437.5,93.8 440.0,97.2 442.5,100.7 445.0,104.3 447.5,108.0 450.0,111.8 452.5,115.6 455.0,119.5 457.5,123.5 460.0,127.5 462.5,131.6 465.0,135.8 467.5,140.0 470.0,144.2 472.5,148.5 475.0,152.9 477.5,157.3 480.0,161.6 480.0,236"></polygon>
+<polyline class="line" points="30.0,236.0 32.5,236.0 35.0,236.0 37.5,236.0 40.0,235.9 42.5,235.8 45.0,235.7 47.5,235.6 50.0,235.4 52.5,235.2 55.0,234.9 57.5,234.6 60.0,234.3 62.5,233.9 65.0,233.5 67.5,233.0 70.0,232.5 72.5,231.9 75.0,231.3 77.5,230.6 80.0,229.9 82.5,229.1 85.0,228.3 87.5,227.4 90.0,226.4 92.5,225.5 95.0,224.4 97.5,223.3 100.0,222.2 102.5,221.0 105.0,219.7 107.5,218.4 110.0,217.1 112.5,215.7 115.0,214.2 117.5,212.7 120.0,211.2 122.5,209.6 125.0,207.9 127.5,206.2 130.0,204.5 132.5,202.7 135.0,200.9 137.5,199.0 140.0,197.1 142.5,195.1 145.0,193.1 147.5,191.1 150.0,189.0 152.5,186.9 155.0,184.7 157.5,182.5 160.0,180.3 162.5,178.1 165.0,175.8 167.5,173.5 170.0,171.1 172.5,168.7 175.0,166.3 177.5,163.9 180.0,161.5 182.5,159.0 185.0,156.5 187.5,154.0 190.0,151.5 192.5,148.9 195.0,146.4 197.5,143.8 200.0,141.3 202.5,138.7 205.0,136.1 207.5,133.5 210.0,130.9 212.5,128.3 215.0,125.7 217.5,123.1 220.0,120.5 222.5,117.9 225.0,115.3 227.5,112.7 230.0,110.2 232.5,107.6 235.0,105.1 237.5,102.6 240.0,100.1 242.5,97.6 245.0,95.1 247.5,92.7 250.0,90.3 252.5,87.9 255.0,85.5 257.5,83.2 260.0,80.9 262.5,78.6 265.0,76.4 267.5,74.2 270.0,72.0 272.5,69.9 275.0,67.8 277.5,65.8 280.0,63.8 282.5,61.9 285.0,60.0 287.5,58.2 290.0,56.4 292.5,54.7 295.0,53.0 297.5,51.4 300.0,49.9 302.5,48.4 305.0,47.0 307.5,45.6 310.0,44.3 312.5,43.1 315.0,42.0 317.5,40.9 320.0,39.9 322.5,39.0 325.0,38.1 327.5,37.3 330.0,36.6 332.5,36.0 335.0,35.5 337.5,35.0 340.0,34.6 342.5,34.3 345.0,34.1 347.5,34.0 350.0,34.0 352.5,34.1 355.0,34.2 357.5,34.5 360.0,34.8 362.5,35.2 365.0,35.8 367.5,36.4 370.0,37.1 372.5,37.9 375.0,38.8 377.5,39.8 380.0,40.9 382.5,42.2 385.0,43.5 387.5,44.9 390.0,46.4 392.5,48.0 395.0,49.7 397.5,51.5 400.0,53.4 402.5,55.4 405.0,57.5 407.5,59.7 410.0,62.0 412.5,64.5 415.0,67.0 417.5,69.6 420.0,72.3 422.5,75.1 425.0,78.0 427.5,80.9 430.0,84.0 432.5,87.2 435.0,90.4 437.5,93.8 440.0,97.2 442.5,100.7 445.0,104.3 447.5,108.0 450.0,111.8 452.5,115.6 455.0,119.5 457.5,123.5 460.0,127.5 462.5,131.6 465.0,135.8 467.5,140.0 470.0,144.2 472.5,148.5 475.0,152.9 477.5,157.3 480.0,161.6 482.5,166.1 485.0,170.5 487.5,174.9 490.0,179.3 492.5,183.8 495.0,188.1 497.5,192.5 500.0,196.8 502.5,201.0 505.0,205.2 507.5,209.3 510.0,213.2 512.5,217.0 515.0,220.7 517.5,224.1 520.0,227.4 522.5,230.3 525.0,232.8 527.5,234.8 530.0,236.0"></polyline>
+<line class="thin" x1="30" y1="236" x2="530" y2="236"></line>
+<line class="dash" x1="180.0" y1="26" x2="180.0" y2="236"></line>
+<line class="dash" x1="480.0" y1="26" x2="480.0" y2="236"></line>
+<text class="quiet" x="30.0" y="256" text-anchor="middle">0</text>
+<text class="quiet" x="180.0" y="256" text-anchor="middle">0.3</text>
+<text class="quiet" x="480.0" y="256" text-anchor="middle">0.9</text>
+<text class="quiet" x="530.0" y="256" text-anchor="middle">1</text>
+<text x="330.0" y="174" text-anchor="middle">90% of my guess</text>
+<text class="quiet" x="280.0" y="282" text-anchor="middle">chance that the two recognize each other</text>
+</svg>
 <figcaption>The guess as a curve. 90% of it lies between the two dashed lines.</figcaption>
 </figure>
-</div>
+
+
 </section>
 <section id="so-what-are-the-odds" class="level2">
 <h2 class="anchored" data-anchor-id="so-what-are-the-odds">So what are the odds?</h2>
@@ -277,7 +359,7 @@ How to read the formula, step by step
 <h2 class="anchored" data-anchor-id="but-almost-everyone-finds-someone">But almost everyone finds someone</h2>
 <p>A US survey of couples, How Couples Meet and Stay Together, shows that 96% of people aged 18 to 60 have had a partner. With one soul mate in 1.3 billion, almost nobody would have had a partner.</p>
 <p>What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.</p>
-<p>By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.</p>
+<p>By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. This seems too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.</p>
 <p>In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group. With k it gives 78%.</p>
 <p>Press play and watch 1,000 lives from age 18 to 60. You can also drag the slider to any age.</p>
 <figure class="lives figure" id="lives">
@@ -290,12 +372,56 @@ How to read the formula, step by step
 <figcaption>Each dot is one life. A dot lights up once that person has had a partner. The count at every age is what the fitted model gives: 569 at 18, 967 at 30 and 994 at 60.</figcaption>
 </figure>
 <script src="lives.js"></script>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/partners.png" class="img-fluid figure-img" alt="Observed shares rise from 81% at 18 to 24 to more than 99% at 50 to 60. The solid model line follows them closely. The dotted line starts too low at 68%."></p>
+
+<figure class="chart-fig figure">
+<svg class="chart" viewbox="0 0 560 356" role="img" aria-label="Shares in the survey rise from 81% at ages 18 to 24 to more than 99% at ages 50 to 60. The solid model line follows them closely. The dotted line starts too low at 68%.">
+<line class="thin" x1="56" y1="270.0" x2="540" y2="270.0"></line>
+<text class="quiet" x="48" y="274.0" text-anchor="end">60%</text>
+<line class="thin" x1="56" y1="210.0" x2="540" y2="210.0"></line>
+<text class="quiet" x="48" y="214.0" text-anchor="end">70%</text>
+<line class="thin" x1="56" y1="150.0" x2="540" y2="150.0"></line>
+<text class="quiet" x="48" y="154.0" text-anchor="end">80%</text>
+<line class="thin" x1="56" y1="90.0" x2="540" y2="90.0"></line>
+<text class="quiet" x="48" y="94.0" text-anchor="end">90%</text>
+<line class="thin" x1="56" y1="30.0" x2="540" y2="30.0"></line>
+<text class="quiet" x="48" y="34.0" text-anchor="end">100%</text>
+<polyline class="dots" points="96.3,223.5 177.0,71.2 257.7,43.5 338.3,35.8 419.0,32.1 499.7,30.6"></polyline>
+<polyline class="line" points="96.3,159.3 177.0,62.0 257.7,46.1 338.3,40.4 419.0,36.7 499.7,34.3"></polyline>
+<g><title>Ages 18 to 24: survey 81%, people differ 78%, everyone the same 68%</title>
+<rect class="hit" x="56.0" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="96.3" cy="145.7" r="5.5"></circle>
+<text class="quiet" x="96.3" y="290" text-anchor="middle">18 to 24</text></g>
+<g><title>Ages 25 to 29: survey 92%, people differ 95%, everyone the same 93%</title>
+<rect class="hit" x="136.7" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="177.0" cy="75.4" r="5.5"></circle>
+<text class="quiet" x="177.0" y="290" text-anchor="middle">25 to 29</text></g>
+<g><title>Ages 30 to 34: survey 99%, people differ 97%, everyone the same 98%</title>
+<rect class="hit" x="217.3" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="257.7" cy="37.2" r="5.5"></circle>
+<text class="quiet" x="257.7" y="290" text-anchor="middle">30 to 34</text></g>
+<g><title>Ages 35 to 39: survey 97%, people differ 98%, everyone the same 99%</title>
+<rect class="hit" x="298.0" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="338.3" cy="45.4" r="5.5"></circle>
+<text class="quiet" x="338.3" y="290" text-anchor="middle">35 to 39</text></g>
+<g><title>Ages 40 to 49: survey 99%, people differ 99%, everyone the same 100%</title>
+<rect class="hit" x="378.7" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="419.0" cy="35.9" r="5.5"></circle>
+<text class="quiet" x="419.0" y="290" text-anchor="middle">40 to 49</text></g>
+<g><title>Ages 50 to 60: survey 100%, people differ 99%, everyone the same 100%</title>
+<rect class="hit" x="459.3" y="30" width="80.7" height="266"></rect>
+<circle class="dot" cx="499.7" cy="32.2" r="5.5"></circle>
+<text class="quiet" x="499.7" y="290" text-anchor="middle">50 to 60</text></g>
+<text x="84.3" y="136.7" text-anchor="middle">81%</text>
+<text x="108.3" y="240.5" text-anchor="middle">68%</text>
+<text class="quiet" x="298.0" y="314" text-anchor="middle">age</text>
+<circle class="dot" cx="62" cy="338" r="5.5"></circle><text x="74" y="342">survey</text>
+<line class="line" x1="140" y1="338" x2="168" y2="338"></line><text x="176" y="342">people differ</text>
+<line class="dots" x1="282" y1="338" x2="310" y2="338"></line><text x="318" y="342">everyone meets the same number</text>
+</svg>
 <figcaption>Share of people who ever had a partner, by age. The dots are the survey. The solid line lets people differ in how many others they meet. The dotted line gives everyone the same number.</figcaption>
 </figure>
-</div>
+
+
 <p>By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14. The interval runs from 10 to 19.</p>
 <p>A study of speed dating at Columbia University gives a cross check. Both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.</p>
 <p>The repository also has a small demo that plays out 1,000 random lives. In one run, 973 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 782 in Germany. Nobody found their one soul mate in any of the three runs. You start it with <code>uv run marimo run demo/roulette.py</code>.</p>
@@ -307,6 +433,7 @@ How to read the formula, step by step
 <li>The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.</li>
 <li>The chance of recognizing each other is a guess. It drives most of the uncertainty in the soul mate odds.</li>
 <li>“Had a partner” is a low bar. The 14 are people who could become a partner, which is less than a soul mate.</li>
+<li>The pool counts everyone your age, whatever their gender and whoever they are attracted to. If only half of them could be your soul mate, only half of the people you meet would count too, so the odds stay about the same.</li>
 </ul>
 </section>
 <section id="if-you-run-the-code" class="level2">
