@@ -4,9 +4,7 @@
 // posterior mean of the partner model in the soulmates repository (notebook 03), computed
 // from data/demo_inputs.json. The survey behind the model covers ages 18 to 60.
 (function () {
-  const LIT = [569, 638, 738, 804, 850, 882, 906, 924, 937, 948, 956, 963, 967, 970, 973, 976, 978, 980, 981,
-    983, 984, 985, 986, 987, 988, 988, 989, 990, 990, 991, 991, 991, 992, 992, 992, 992, 993, 993, 993, 993,
-    993, 994, 994];
+  const LIT = [569, 639, 738, 804, 849, 882, 906, 923, 937, 948, 956, 963, 967, 970, 973, 976, 978, 980, 981, 983, 984, 985, 986, 987, 987, 988, 989, 989, 990, 990, 991, 991, 992, 992, 992, 992, 993, 993, 993, 993, 993, 993, 994];
   const FIRST = 18, LAST = FIRST + LIT.length - 1, SECONDS = 8;
 
   const root = document.getElementById("lives");
