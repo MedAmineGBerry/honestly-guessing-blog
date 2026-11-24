@@ -112,5 +112,110 @@
    "people_differ": 0.9929,
    "everyone_same": 0.999
   }
- ]
+ ],
+ "bands": [
+  {
+   "ages": "0 to 4",
+   "mean": 0.188,
+   "low": 0.155,
+   "high": 0.226
+  },
+  {
+   "ages": "5 to 9",
+   "mean": 0.161,
+   "low": 0.131,
+   "high": 0.195
+  },
+  {
+   "ages": "10 to 14",
+   "mean": 0.11,
+   "low": 0.086,
+   "high": 0.138
+  },
+  {
+   "ages": "15 to 19",
+   "mean": 0.281,
+   "low": 0.23,
+   "high": 0.337
+  },
+  {
+   "ages": "20 to 24",
+   "mean": 0.564,
+   "low": 0.452,
+   "high": 0.698
+  },
+  {
+   "ages": "25 to 29",
+   "mean": 0.565,
+   "low": 0.437,
+   "high": 0.718
+  },
+  {
+   "ages": "30 to 34",
+   "mean": 0.419,
+   "low": 0.321,
+   "high": 0.536
+  },
+  {
+   "ages": "35 to 39",
+   "mean": 0.352,
+   "low": 0.273,
+   "high": 0.449
+  },
+  {
+   "ages": "40 to 44",
+   "mean": 0.308,
+   "low": 0.231,
+   "high": 0.403
+  },
+  {
+   "ages": "45 to 49",
+   "mean": 0.284,
+   "low": 0.22,
+   "high": 0.36
+  },
+  {
+   "ages": "50 to 54",
+   "mean": 0.204,
+   "low": 0.157,
+   "high": 0.26
+  },
+  {
+   "ages": "55 to 59",
+   "mean": 0.168,
+   "low": 0.127,
+   "high": 0.22
+  },
+  {
+   "ages": "60 to 64",
+   "mean": 0.122,
+   "low": 0.092,
+   "high": 0.157
+  },
+  {
+   "ages": "65 to 69",
+   "mean": 0.111,
+   "low": 0.082,
+   "high": 0.148
+  },
+  {
+   "ages": "70 to 74",
+   "mean": 0.047,
+   "low": 0.027,
+   "high": 0.075
+  },
+  {
+   "ages": "75 to 79",
+   "mean": 0.042,
+   "low": 0.019,
+   "high": 0.079
+  },
+  {
+   "ages": "80 and over",
+   "mean": 0.034,
+   "low": 0.011,
+   "high": 0.072
+  }
+ ],
+ "bands_note": "New people of your own age per day in a typical country, on an average day of the week, by 5 year age band."
 }

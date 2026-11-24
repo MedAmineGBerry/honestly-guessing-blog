@@ -109,7 +109,36 @@ def partners():
            "Share of people who ever had a partner, by age. The dots are the survey. The solid line lets people differ in how many others they meet. The dotted line gives everyone the same number.")
 
 
+def ages():
+    rows = DATA["bands"]
+    left, right, top, base, most = 56, 540, 30, 250, 0.8
+    width = (right - left) / len(rows)
+    x = lambda i: left + width * (i + 0.5)
+    y = lambda rate: base - (base - top) * rate / most
+    parts = [f'<rect class="tint" x="{left + width * 3:.1f}" y="{top}" width="{width * 9.2:.1f}" height="{base - top}"/>',
+             f'<text x="{left + width * 7.6:.1f}" y="{top + 16}" text-anchor="middle">the years I count, 15 to 60</text>']
+    for tick in (0, 0.2, 0.4, 0.6, 0.8):
+        parts.append(f'<line class="thin" x1="{left}" y1="{y(tick):.1f}" x2="{right}" y2="{y(tick):.1f}"/>')
+        parts.append(f'<text class="quiet" x="{left - 8}" y="{y(tick) + 4:.1f}" text-anchor="end">{tick:g}</text>')
+    for i, row in enumerate(rows):
+        parts.append(f'<g><title>Ages {row["ages"]}: {row["mean"]:.2f} new people a day, range {row["low"]:.2f} to {row["high"]:.2f}</title>')
+        parts.append(f'<rect class="hit" x="{left + width * i:.1f}" y="{top}" width="{width:.1f}" height="{base - top + 26}"/>')
+        parts.append(f'<line class="line" x1="{x(i):.1f}" y1="{y(row["low"]):.1f}" x2="{x(i):.1f}" y2="{y(row["high"]):.1f}"/>')
+        parts.append(f'<circle class="dot" cx="{x(i):.1f}" cy="{y(row["mean"]):.1f}" r="5"/>')
+        if i % 2 == 0:  # every second band carries its starting age
+            parts.append(f'<text class="quiet" x="{x(i):.1f}" y="{base + 20}" text-anchor="middle">{5 * i}</text>')
+        parts.append("</g>")
+    peak = max(range(len(rows)), key=lambda i: rows[i]["mean"])
+    parts.append(f'<text x="{x(peak) + 12:.1f}" y="{y(rows[peak]["mean"]) - 12:.1f}">{rows[peak]["mean"]:.2f} a day</text>')
+    parts.append(f'<text class="quiet" x="{(left + right) / 2}" y="{base + 44}" text-anchor="middle">your age</text>')
+    figure("ages", 560, base + 56,
+           f"A dot for each 5 year age band with a line for its range. The rate is highest between 20 and 29 with {rows[peak]['mean']:.2f} new people a day and falls with age.",
+           parts,
+           "New people of your own age you talk to per day, by age, in a typical country. The line is the 94% interval.")
+
+
 if __name__ == "__main__":
+    ages()
     countries()
     guess()
     partners()
@@ -118,4 +147,4 @@ if __name__ == "__main__":
     youngest = DATA["partners"][0]
     assert by_name["Italy"] == 9617 and by_name["Germany"] == 1777, by_name
     assert (round(youngest["survey"], 2), round(youngest["people_differ"], 2), round(youngest["everyone_same"], 2)) == (0.81, 0.78, 0.68), youngest
-    print("wrote 3 charts")
+    print("wrote 4 charts")

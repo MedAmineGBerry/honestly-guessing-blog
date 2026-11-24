@@ -31,12 +31,13 @@ title: "Do opposites attract?"
 description: "Two sentences for search results and link previews."
 date: 2027-01-15
 opus: 2
+minutes: 8
 verdict: "Not really"
 sleeve: teal
 ---
 ```
 
-`opus` is the number of the post. `verdict` is two or three words for the round sticker. `sleeve` is the colour of the post: `mustard`, `sunset`, `teal`, `rose`, `blue` or `pastel`.
+`opus` is the number of the post. `minutes` is the reading time shown on the home page. Leave it out and Quarto counts for you, but its count includes the page code of charts and animations and comes out too high. `verdict` is two or three words for the round sticker. `sleeve` is the colour of the post: `mustard`, `sunset`, `teal`, `rose`, `blue` or `pastel`.
 
 3. Add a row to the table of posts in this file.
 
