@@ -145,6 +145,6 @@ if __name__ == "__main__":
     # The check: the numbers the post states in its text are the ones in the data file.
     by_name = {row["name"]: row["mean"] for row in DATA["countries"]}
     youngest = DATA["partners"][0]
-    assert by_name["Italy"] == 9617 and by_name["Germany"] == 1777, by_name
+    assert by_name["Italy"] == 9626 and by_name["Germany"] == 1770, by_name
     assert (round(youngest["survey"], 2), round(youngest["people_differ"], 2), round(youngest["everyone_same"], 2)) == (0.81, 0.78, 0.68), youngest
     print("wrote 4 charts")

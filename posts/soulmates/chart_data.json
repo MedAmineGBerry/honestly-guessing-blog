@@ -1,66 +1,66 @@
 {
- "source": "Computed on 2026-11-24 from the soulmates repository with the seeds of notebooks 02 and 03. Ranges are the 3rd to 97th percentile of the posterior draws.",
+ "source": "Computed on 2026-11-24 from the soulmates repository with the seeds of notebooks 02 and 03 and the guess of 0.6 to 0.9. Ranges are the 3rd to 97th percentile of the posterior draws.",
  "countries": [
   {
    "name": "Italy",
-   "mean": 9617,
-   "low": 7775,
-   "high": 11827
+   "mean": 9626,
+   "low": 7820,
+   "high": 11798
   },
   {
    "name": "Netherlands",
-   "mean": 8778,
-   "low": 6047,
-   "high": 12488
+   "mean": 8792,
+   "low": 5987,
+   "high": 12421
   },
   {
    "name": "Finland",
-   "mean": 6767,
-   "low": 5503,
-   "high": 8265
+   "mean": 6755,
+   "low": 5512,
+   "high": 8206
   },
   {
    "name": "France",
-   "mean": 6642,
-   "low": 5805,
-   "high": 7551
+   "mean": 6633,
+   "low": 5824,
+   "high": 7529
   },
   {
    "name": "Luxembourg",
-   "mean": 6623,
-   "low": 5433,
-   "high": 8065
+   "mean": 6617,
+   "low": 5385,
+   "high": 7985
   },
   {
    "name": "Belgium",
-   "mean": 6337,
-   "low": 5028,
-   "high": 7955
+   "mean": 6360,
+   "low": 5018,
+   "high": 8018
   },
   {
    "name": "Poland",
-   "mean": 5318,
-   "low": 4323,
-   "high": 6493
+   "mean": 5331,
+   "low": 4314,
+   "high": 6473
   },
   {
    "name": "Great Britain",
-   "mean": 5105,
-   "low": 4107,
-   "high": 6250
+   "mean": 5106,
+   "low": 4064,
+   "high": 6275
   },
   {
    "name": "Germany",
-   "mean": 1777,
-   "low": 1363,
-   "high": 2266
+   "mean": 1770,
+   "low": 1368,
+   "high": 2239
   }
  ],
  "typical": 5786,
  "guess": {
-  "alpha": 3.6104,
-  "beta": 2.475,
-  "low": 0.3,
+  "alpha": 15.5118,
+  "beta": 5.244,
+  "low": 0.6,
   "high": 0.9
  },
  "partners": [
@@ -69,23 +69,23 @@
    "people": 254,
    "survey": 0.8071,
    "survey_weighted": 0.7678,
-   "people_differ": 0.7845,
-   "everyone_same": 0.6775
+   "people_differ": 0.7842,
+   "everyone_same": 0.6777
   },
   {
    "ages": "25 to 29",
    "people": 410,
    "survey": 0.9244,
    "survey_weighted": 0.9097,
-   "people_differ": 0.9466,
-   "everyone_same": 0.9313
+   "people_differ": 0.9463,
+   "everyone_same": 0.9312
   },
   {
    "ages": "30 to 34",
    "people": 251,
    "survey": 0.988,
    "survey_weighted": 0.9849,
-   "people_differ": 0.9732,
+   "people_differ": 0.973,
    "everyone_same": 0.9775
   },
   {
@@ -93,7 +93,7 @@
    "people": 272,
    "survey": 0.9743,
    "survey_weighted": 0.9701,
-   "people_differ": 0.9826,
+   "people_differ": 0.9824,
    "everyone_same": 0.9904
   },
   {
@@ -101,7 +101,7 @@
    "people": 505,
    "survey": 0.9901,
    "survey_weighted": 0.9898,
-   "people_differ": 0.9889,
+   "people_differ": 0.9887,
    "everyone_same": 0.9965
   },
   {
@@ -109,7 +109,7 @@
    "people": 828,
    "survey": 0.9964,
    "survey_weighted": 0.9961,
-   "people_differ": 0.9929,
+   "people_differ": 0.9928,
    "everyone_same": 0.999
   }
  ],
@@ -118,85 +118,85 @@
    "ages": "0 to 4",
    "mean": 0.188,
    "low": 0.155,
-   "high": 0.226
+   "high": 0.227
   },
   {
    "ages": "5 to 9",
    "mean": 0.161,
    "low": 0.131,
-   "high": 0.195
+   "high": 0.198
   },
   {
    "ages": "10 to 14",
    "mean": 0.11,
    "low": 0.086,
-   "high": 0.138
+   "high": 0.139
   },
   {
    "ages": "15 to 19",
    "mean": 0.281,
    "low": 0.23,
-   "high": 0.337
+   "high": 0.342
   },
   {
    "ages": "20 to 24",
-   "mean": 0.564,
+   "mean": 0.562,
    "low": 0.452,
-   "high": 0.698
+   "high": 0.695
   },
   {
    "ages": "25 to 29",
-   "mean": 0.565,
-   "low": 0.437,
-   "high": 0.718
+   "mean": 0.567,
+   "low": 0.442,
+   "high": 0.72
   },
   {
    "ages": "30 to 34",
-   "mean": 0.419,
-   "low": 0.321,
+   "mean": 0.418,
+   "low": 0.32,
    "high": 0.536
   },
   {
    "ages": "35 to 39",
    "mean": 0.352,
-   "low": 0.273,
-   "high": 0.449
+   "low": 0.271,
+   "high": 0.451
   },
   {
    "ages": "40 to 44",
-   "mean": 0.308,
-   "low": 0.231,
-   "high": 0.403
+   "mean": 0.307,
+   "low": 0.232,
+   "high": 0.397
   },
   {
    "ages": "45 to 49",
-   "mean": 0.284,
-   "low": 0.22,
-   "high": 0.36
+   "mean": 0.285,
+   "low": 0.219,
+   "high": 0.366
   },
   {
    "ages": "50 to 54",
    "mean": 0.204,
    "low": 0.157,
-   "high": 0.26
+   "high": 0.263
   },
   {
    "ages": "55 to 59",
    "mean": 0.168,
-   "low": 0.127,
-   "high": 0.22
+   "low": 0.126,
+   "high": 0.222
   },
   {
    "ages": "60 to 64",
    "mean": 0.122,
    "low": 0.092,
-   "high": 0.157
+   "high": 0.159
   },
   {
    "ages": "65 to 69",
-   "mean": 0.111,
-   "low": 0.082,
-   "high": 0.148
+   "mean": 0.112,
+   "low": 0.083,
+   "high": 0.149
   },
   {
    "ages": "70 to 74",
@@ -206,15 +206,15 @@
   },
   {
    "ages": "75 to 79",
-   "mean": 0.042,
-   "low": 0.019,
-   "high": 0.079
+   "mean": 0.043,
+   "low": 0.018,
+   "high": 0.081
   },
   {
    "ages": "80 and over",
    "mean": 0.034,
    "low": 0.011,
-   "high": 0.072
+   "high": 0.071
   }
  ],
  "bands_note": "New people of your own age per day in a typical country, on an average day of the week, by 5 year age band."

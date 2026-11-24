@@ -1,6 +1,6 @@
 ---
 title: "Do we really have only one soul mate in the world?"
-description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 325,800. Real couples point to about 14 possible partners."
+description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 261,000. Real couples point to about 14 possible partners."
 date: 2026-11-12
 opus: 1
 verdict: "No, more like 14"
@@ -18,7 +18,7 @@ As I was traveling home, I found myself reading Randall Munroe's book *What If?*
 
 He sets a few rules: your soul mate is one random person, alive today and within a few years of your age, which leaves about half a billion candidates. The two of you recognize each other the moment your eyes meet. He then guesses that you lock eyes with a few dozen new strangers a day and that one in ten of them is close to your age. That adds up to about 50,000 people in a lifetime, and to true love in one lifetime out of 10,000. I wanted to see what the same chain gives with measured numbers.
 
-If the saying were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples, however, shows that about 14 of the people your own age you will talk to could become a partner. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
+If the saying were true, your chance of ever finding that person would be about 1 in 261,000. The data on real couples, however, shows that about 14 of the people your own age you will talk to could become a partner. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
 ## Start with 4 people
 
@@ -113,7 +113,7 @@ Where you live changes the count too. In Italy, the most talkative country in th
 
 ```
 
-The surveys were run country by country, so countries are the groups in my model, and with other data the groups could just as well be cities or professions. Each country gets its own level, the levels come from one shared distribution, and a country with few diaries is pulled towards the average of the others. The same distribution also tells us how far a country without data could sit from the average. For a person in such a country, N is about 5,800, with a wide range from 2,000 to 17,000, which is one new person about every three days.
+The surveys were run country by country, so countries are the groups in my model, and with other data the groups could just as well be cities or professions. Each country gets its own level, the levels come from one shared distribution, and a country with few diaries is pulled towards the average of the others. The same distribution also tells us how far a country without data could sit from the average. For a person in such a country, N is about 5,900, with a wide range from 2,000 to 16,000, which is one new person about every three days.
 
 I cannot tell culture from survey method here, because four countries, Germany among them, asked for an estimate of work contacts instead of a list, and part of the gap may come from that.
 
@@ -121,9 +121,9 @@ I cannot tell culture from survey method here, because four countries, Germany a
 
 Munroe lets soul mates recognize each other the moment their eyes meet. In my version you have to meet and talk first, and then both of you have to realize it. Many first meetings leave little time for that: in the diaries, 43% of first meetings with someone your own age are over in less than five minutes.
 
-No data exists for the chance that two soul mates recognize each other, so I state my guess as a sentence: "I am 90% sure it lies between 0.3 and 0.9."
+No data exists for the chance that two soul mates recognize each other. I think they are more likely than not to notice, so I state my guess as a sentence: "I am 90% sure it lies between 0.6 and 0.9."
 
-A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9, and it picks the flattest one, which has an average of 0.596.
+A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.6 and 0.9, and it picks the flattest one, which has an average of 0.746.
 
 ```{=html}
 
@@ -131,31 +131,31 @@ A tool called PreliZ turns the sentence into a curve of plausible values. Many c
 
 ```
 
-You may believe something else, and we can see what that does. With a chance of 0.3 the odds below get about twice as bad, and with 0.9 they get better by half, so where you live moves them more than your guess does.
+You may believe something else, and we can see what that does. With a chance of 0.5 the odds below get about one and a half times as bad, and with 0.9 they get better by a fifth, so where you live moves them more than your guess does.
 
 ## So what are the odds?
 
-Now we put the three numbers into the formula. N averages about 6,850, which is higher than its middle value of 5,800 because a few very talkative countries pull the average up.
+Now we put the three numbers into the formula. N averages about 6,800, which is higher than its middle value of 5,900 because a few very talkative countries pull the average up.
 
 ```
-6,850 × 0.596 / 1,328,956,521 = 0.00000307
+6,822 × 0.746 / 1,328,956,521 = 0.00000383
 ```
 
-That is about 1 in 325,800, and the 94% interval runs from 1 in 1.5 million to 1 in 115,000.
+That is about 1 in 261,000, and the 94% interval runs from 1 in 935,000 to 1 in 108,000.
 
-Munroe got 1 in 10,000, so my answer is about 30 times worse than his. I expected a bad number, and this one still surprised me. All three numbers pull the same way. My pool is almost three times as large as his half a billion, and he guessed 50,000 people you lock eyes with where I count 6,850 you talk to. On top of that, in my version you may meet your soul mate and not notice.
+Munroe got 1 in 10,000, so my answer is about 26 times worse than his. I expected a bad number, and this one still surprised me. All three numbers pull the same way. My pool is almost three times as large as his half a billion, and he guessed 50,000 people you lock eyes with where I count 6,800 you talk to. On top of that, in my version you may meet your soul mate and not notice.
 
-For comparison, picking six right numbers out of 49 in a lottery is 43 times less likely. But for an even chance of finding your soul mate, you would have to talk to more than a billion people of your own age, and at one every three days that takes about 9 million years.
+For comparison, picking six right numbers out of 49 in a lottery is 54 times less likely. But for an even chance of finding your soul mate, you would have to talk to almost 900 million people of your own age, and at one every three days that takes about 7 million years.
 
-The best case is Italy, the most talkative country, where my guess for recognition gives odds of 1 in 231,900 and certain recognition gives 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
+The best case is Italy, the most talkative country, where my guess for recognition gives odds of 1 in 185,000 and certain recognition gives 1 in 138,100. And even at the headline odds, about 5,100 people of your generation do find their one soul mate.
 
 ## But almost everyone finds someone
 
 Real life sends a different message, because almost everyone I know has found someone. The couples survey from before, How Couples Meet and Stay Together, says the same in numbers: 96% of people aged 18 to 60 have had a partner. With one soul mate in 1.3 billion, almost nobody would have.
 
-What share of the people you talk to would have to be possible partners for that to happen? I call that share q, and the fit gives q = 1 in 424.
+What share of the people you talk to would have to be possible partners for that to happen? I call that share q, and the fit gives q = 1 in 423.
 
-By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998, and this seems too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, which matches the survey.
+By age 30, the average person has met 2,726 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/423)^2726 = 0.998, and this seems too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.92 the chance by age 30 is 0.967, which matches the survey.
 
 In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group, and with k it gives 78%.
 
@@ -180,9 +180,9 @@ Press play and watch 1,000 lives from age 18 to 60, or drag the slider to any ag
 
 ```
 
-By age 60 the average person has met 5,783 people of their own age, and 5,783 / 424 is about 14, with an interval from 10 to 19. Fourteen gives hope. It is a number we can do something with.
+By age 60 the average person has met 5,783 people of their own age, and 5,783 / 423 is about 14, with an interval from 11 to 19. Fourteen gives hope. It is a number we can do something with.
 
-A study of speed dating at Columbia University gives a cross check: both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 424.
+A study of speed dating at Columbia University gives a cross check: both people said yes after 1 in 6 of 4,189 four minute dates. Those were students who had signed up to date, so their rate is far above my 1 in 423.
 
 Munroe ended his chapter hoping the world does not work the way the saying claims, and the data agrees with him. You will meet about 14 people who could be the one, and more than half of them before you are 35. Go and talk to them.
 
@@ -196,9 +196,9 @@ Munroe ended his chapter hoping the world does not work the way the saying claim
 
 ## If you run the code
 
-The repository also has a small demo that plays out 1,000 random lives. In one run, 973 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 782 in Germany. Nobody found their one soul mate in any of the three runs. You start it with `uv run marimo run demo/roulette.py`.
+The repository also has a small demo that plays out 1,000 random lives. In one run, 962 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 764 in Germany. Nobody found their one soul mate in any of the three runs. You start it with `uv run marimo run demo/roulette.py`.
 
-Call the chance per meeting x. Here x = 0.596 / 1,328,956,521 = 0.000000000448. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999995515279, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
+Call the chance per meeting x. Here x = 0.746 / 1,328,956,521 = 0.000000000561. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999994386574, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
 
 ```python
 P_find = -np.expm1(N * np.log1p(-p_recog / M))
