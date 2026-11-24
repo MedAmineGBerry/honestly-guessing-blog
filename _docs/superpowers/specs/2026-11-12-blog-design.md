@@ -19,7 +19,7 @@ This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start 
 | Posts | One folder per post under `posts/`, with its images next to it. |
 | Animations | A post mixes text with small animations, about one per idea. Each is a plain script in the post's folder, with no library and nothing from other servers. It takes its colour from the sleeve, starts on a button, has a slider, and hides the button for readers who switched motion off. The first one is `posts/soulmates/lives.js`. |
 | Code | Each project keeps its own repository. A post links to it and may show charts from it. |
-| Talks | The slides of a talk are not published on the blog. They stay in the project repository until the talk has been given, so the blog does not give the talk away. |
+| Talks | The slides of a talk are not published on the blog. They stay in a private folder of the project, outside git, until the talk has been given. |
 
 ## Files
 

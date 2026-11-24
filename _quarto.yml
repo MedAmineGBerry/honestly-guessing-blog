@@ -6,6 +6,8 @@ website:
   title: "Honestly Guessing"
   description: "We all grew up with sayings that either gave us hope or held us back. Now that I work with data, I hope to bring some clarity to folk wisdom, and to learn from it in return."
   site-url: https://medaminegberry.github.io/honestly-guessing-blog
+  open-graph: true     # the tags LinkedIn and other sites read to build a link preview
+  twitter-card: true
   navbar:
     pinned: true   # the name and the stripes stay in place while the page scrolls
     right:

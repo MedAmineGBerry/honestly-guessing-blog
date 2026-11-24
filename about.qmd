@@ -1,5 +1,6 @@
 ---
 title: "About"
+author: "Mohamed Amine Jebari"
 toc: false
 ---
 

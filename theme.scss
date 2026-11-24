@@ -109,6 +109,11 @@ p.subtitle { font-style: italic; font-size: 1.15rem; line-height: 1.4; margin: .
 .record:not(:first-child) .sticker .label { display: none; }
 .record:not(:first-child) .sticker-text { font-size: .85rem; margin: 0; }
 
+// A part of the text the reader can open, for detail that would slow the main line down.
+details.more { margin: 1.6rem 0; padding: .7rem 0; border-top: 1px solid $ink; border-bottom: 1px solid $ink; }
+details.more summary { cursor: pointer; font-weight: 500; }
+details.more[open] summary { margin-bottom: 1rem; }
+
 // An animation inside a post: a canvas of dots, a play button and a slider.
 .lives, .pool { margin: 2rem 0; }
 // The small example: four people as four large dots.

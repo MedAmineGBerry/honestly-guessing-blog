@@ -1,5 +1,6 @@
 title-block-banner: false
 toc-title: "On this page"
 date-format: "MMMM YYYY"
+author: "Mohamed Amine Jebari"
 template-partials:
   - title-block.html   # the post header: title, Op. number and the verdict sticker

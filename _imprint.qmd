@@ -1,0 +1,18 @@
+---
+title: "Imprint"
+toc: false
+---
+
+<!--
+A draft. Quarto skips files that start with an underscore, so this page is not published.
+To publish it: fill in the two lines in capitals, rename the file to imprint.qmd,
+and add a link to it in the footer in _quarto.yml.
+-->
+
+Responsible for this site:
+
+Mohamed Amine Jebari
+STREET AND NUMBER
+POSTCODE AND CITY, Germany
+
+Contact: EMAIL ADDRESS

@@ -9,8 +9,8 @@ resources:
   - lives.js
   - pool.js
 categories: [bayes, pymc, folk wisdom]
-image: img/countries.png
-image-alt: "New people of your own age met between 15 and 60, for nine European countries"
+image: img/card.png   # the picture a shared link shows
+image-alt: "The title of the post on cream paper, with a round sticker that says: No, more like 14"
 ---
 
 The saying goes that there is one person out there for you. I tested it with data. If it were true, your chance of ever finding that person would be about 1 in 325,800. The data on real couples shows that about 14 of the people your own age you will talk to could become a partner.
@@ -42,13 +42,16 @@ Play a few lives and watch the count settle near that number.
 
 Both results follow one pattern. Multiply the number of people you meet by the chance of recognizing each other, and divide by the size of the pool. Here that is 2 × 0.5 / 4 = 0.25.
 
-The model uses this formula:
+The full calculation uses this formula:
 
 ```
 P_find = 1 − (1 − 1/M × p_recog) ^ N
 ```
 
 M is the pool, everyone your soul mate could be. N is how many of those people you meet and talk to in your life. p_recog is the chance that you both recognize each other.
+
+<details class="more">
+<summary>How to read the formula, step by step</summary>
 
 Read it from the inside out, with the 4 people and sure recognition. Call them A, B, C and D, and say A is your soul mate.
 
@@ -59,7 +62,11 @@ Read it from the inside out, with the 4 people and sure recognition. Call them A
 
 Why count the failures? A success can come on the first meeting, the second or both, and "both" is easy to count twice. Failing every time happens in one way only.
 
-The formula lets a meeting land on the same person twice, like the pair AA. That is why it gives 7/16 instead of the 8/16 you get with 2 different people, and 0.23 instead of 0.25 with half recognition. With a pool of more than a billion the difference vanishes, and the formula is the same as N × 1/M × p_recog. So I need three numbers.
+The formula lets a meeting land on the same person twice, like the pair AA. That is why it gives 7/16 instead of the 8/16 you get with 2 different people, and 0.23 instead of 0.25 with half recognition.
+
+</details>
+
+For a pool of more than a billion, the formula and the simple pattern give the same result, N × 1/M × p_recog. So I need three numbers.
 
 ## 1.33 billion people your age
 
@@ -67,19 +74,17 @@ The premise says your soul mate is about your age. I took everyone alive in 2023
 
 ## How many people do you meet?
 
-This number took most of the work.
-
 In two surveys, people wrote down everyone they met on one day. POLYMOD covers 8 European countries in 2005 and 2006, and a French survey from 2012 adds a ninth. Together they give 11,107 diary days. A contact is someone you talked to face to face, for at least three words, or touched. For each contact, people said how often they usually meet that person. I count the ones marked "first time".
 
 The pool only holds people within 5 years of your age, so only new people that close in age can count. That is 1 in 4 of them. My first version missed this, and fixing it made the odds about four times worse.
 
 Here is a rough check by hand. Adults write down about 0.35 new people of their own age per day. From age 15 to 60 there are 46 years, and 0.35 × 365 × 46 is about 5,900.
 
-The model does the same sum with more care. The rate peaks in the twenties. Weekend days bring 1.23 times as many new people. And countries differ a lot.
-
-The model works like a weather forecast. In the morning you give rain a 30% chance. Then you see dark clouds and raise it to 70%. The model does the same. It starts from my rough guess for a number and corrects it with the diaries. For each number it returns 4,000 values that fit the data, and I report the range that holds 94% of them.
+A model does the same sum with more care. It works like a weather forecast. In the morning you give rain a 30% chance. Then you see dark clouds and raise it to 70%. The model starts from my rough guess for a number and corrects it with the diaries. For each number it returns 4,000 values that fit the data, and I report the range that holds 94% of them.
 
 I first ran the model on 6,000 made up diaries. I had set the numbers behind them myself, so I knew the true answer and could check that the model gets close to it.
+
+On the real diaries, the rate peaks in the twenties. Weekend days bring 1.23 times as many new people.
 
 ![New people of your own age you talk to between 15 and 60, with 94% intervals. Italy leads with about 9,600. Germany is far below the rest with about 1,800.](img/countries.png){fig-alt="A dot for each of nine countries with an interval line. Italy and the Netherlands are highest, Germany is lowest."}
 
@@ -91,7 +96,7 @@ I cannot tell culture from survey method here. Four countries, Germany among the
 
 No data exists for the chance that two soul mates recognize each other. So I state my guess as a sentence: "I am 90% sure it lies between 0.3 and 0.9."
 
-A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one, so I add no certainty I do not have. The curve has an average of 0.596.
+A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.3 and 0.9. It picks the flattest one. The curve has an average of 0.596.
 
 ![The guess as a curve. 90% of it lies between the two dashed lines.](img/guess.png){fig-alt="A histogram of plausible values for p_recog between 0 and 1, with dashed lines at 0.3 and 0.9."}
 
@@ -105,14 +110,6 @@ Now the three numbers go into the formula. N averages about 6,850. That is highe
 
 That is about 1 in 325,800. The 94% interval runs from 1 in 1.5 million to 1 in 115,000.
 
-One detail for anyone who runs the code. Call the chance per meeting x. Here x = 0.596 / 1,328,956,521 = 0.000000000448. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999995515279, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
-
-```python
-P_find = -np.expm1(N * np.log1p(-p_recog / M))
-```
-
-It is the same formula, because any number a raised to the power N equals exp(N × log a).
-
 The best case is Italy, the most talkative country. With my guess for recognition the odds there are 1 in 231,900, and with certain recognition 1 in 138,200. And even at the headline odds, about 4,100 people of your generation do find their one soul mate.
 
 ## But almost everyone finds someone
@@ -121,7 +118,7 @@ A US survey of couples, How Couples Meet and Stay Together, shows that 96% of pe
 
 What share of the people you talk to would have to be possible partners? I call that share q. The fit gives q = 1 in 424.
 
-Take a first check. By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
+By age 30, the average person has met 2,725 people of their own age. If everyone met exactly that many, the chance of at least one possible partner would be 1 − (1 − 1/424)^2725 = 0.998. That is too high. Some of us talk to many strangers and some to few, so a second number, k, measures how much people differ. With k = 2.95 the chance by age 30 is 0.967, and that matches the survey.
 
 In the survey, 81% of people aged 18 to 24 have had a partner. If everyone met the same number of people, the model gives 68% for that group. With k it gives 78%.
 
@@ -154,6 +151,16 @@ The repository also has a small demo that plays out 1,000 random lives. In one r
 - The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.
 - The chance of recognizing each other is a guess. It drives most of the uncertainty in the soul mate odds.
 - "Had a partner" is a low bar. The 14 are people who could become a partner, which is less than a soul mate.
+
+## If you run the code
+
+Call the chance per meeting x. Here x = 0.596 / 1,328,956,521 = 0.000000000448. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999995515279, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
+
+```python
+P_find = -np.expm1(N * np.log1p(-p_recog / M))
+```
+
+It is the same formula, because any number a raised to the power N equals exp(N × log a).
 
 ## Data and credits
 

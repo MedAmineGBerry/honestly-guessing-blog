@@ -5,7 +5,7 @@
 $if(subtitle)$
 <p class="subtitle lead">$subtitle$</p>
 $endif$
-<p class="label">$if(opus)$Op. $opus$ / $endif$$date$</p>
+<p class="label">$if(opus)$Op. $opus$ / $endif$$date$$for(by-author)$ / $by-author.name.literal$$endfor$</p>
 </div>
 $if(verdict)$
 <div class="sticker"><span class="label">The verdict</span><span class="sticker-text">$verdict$</span></div>
