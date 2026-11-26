@@ -1,6 +1,6 @@
 ---
-title: "Do we really have only one soul mate in the world?"
-description: "If everyone had exactly one soul mate, your chance of finding them would be about 1 in 261,000. Real couples point to about 14 possible partners."
+title: "Do we really have only one soulmate in the world?"
+description: "If everyone had exactly one soulmate, your chance of finding them would be about 1 in 261,000. Real couples point to about 14 possible partners."
 date: 2026-11-12
 opus: 1
 verdict: "No, more like 14"
@@ -14,31 +14,31 @@ image: img/card.png   # the picture a shared link shows
 image-alt: "The title of the post on cream paper, with a round sticker that says: No, more like 14"
 ---
 
-As I was traveling home, I found myself reading Randall Munroe's book *What If?* and stumbled upon one of my favourite chapters, the one about each of us having only one soul mate. Throughout the chapter, he takes this old saying apart and shows how implausible it sounds. Inspired by his tenacity to give the world some hope of being with someone, I decided to do the same and take a data driven approach to... hope, I guess?
+As I was traveling home, I found myself reading Randall Munroe's book *What If?* and stumbled upon one of my favourite chapters, the one about each of us having only one soulmate. Throughout the chapter, he takes this old saying apart and shows how implausible it sounds. Inspired by his tenacity to give the world some hope of being with someone, I decided to do the same and take a data driven approach to... hope, I guess?
 
-He sets a few rules: your soul mate is one random person, alive today and within a few years of your age, which leaves about half a billion candidates. The two of you recognize each other the moment your eyes meet. He then guesses that you lock eyes with a few dozen new strangers a day and that one in ten of them is close to your age. That adds up to about 50,000 people in a lifetime, and to true love in one lifetime out of 10,000. I wanted to see what the same chain gives with measured numbers.
+He sets a few rules: your soulmate is one random person, alive today and within a few years of your age, which leaves about half a billion candidates. The two of you recognize each other the moment your eyes meet. He then guesses that you lock eyes with a few dozen new strangers a day and that one in ten of them is close to your age. That adds up to about 50,000 people in a lifetime, and to true love in one lifetime out of 10,000. I wanted to see what the same chain gives with measured numbers.
 
 If the saying were true, your chance of ever finding that person would be about 1 in 261,000. The data on real couples, however, shows that about 14 of the people your own age you will talk to could become a partner. All the code is in the [soulmates repository](https://github.com/MedAmineGBerry/soulmates).
 
 ## Start with 4 people
 
-Let us start small and say your soul mate is one random person in a pool of 4 people, of whom you meet 2 in your life. If you always recognize your soul mate, your chance is 2 in 4, which is 0.5.
+Let us start small and say your soulmate is one random person in a pool of 4 people, of whom you meet 2 in your life. If you always recognize your soulmate, your chance is 2 in 4, which is 0.5.
 
-Now say you only recognize them half of the time. Your soul mate is still among the 2 people you meet in half of all lives, and in half of those lives you recognize them, so we get 0.5 × 0.5 = 0.25.
+Now say you only recognize them half of the time. Your soulmate is still among the 2 people you meet in half of all lives, and in half of those lives you recognize them, so we get 0.5 × 0.5 = 0.25.
 
 Play a few lives and watch the count settle near that number.
 
 ```{=html}
 <figure class="pool" id="pool">
 <div class="pool-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-<p class="pool-says" aria-live="polite">Four people. One of them is your soul mate, and you will meet two.</p>
+<p class="pool-says" aria-live="polite">Four people. One of them is your soulmate, and you will meet two.</p>
 <div class="lives-controls">
 <button type="button" class="label" data-one>Play one life</button>
 <button type="button" class="label" data-many>Play 100 lives</button>
 <label><input type="checkbox" data-half checked> You recognize them half of the time</label>
 </div>
-<p class="lives-count"><span data-found>0</span> of <span data-lives>0</span> lives found their soul mate.</p>
-<figcaption>The ringed dot is your soul mate. The filled dots are the two people you meet. Over many lives the share settles near 0.25, and near 0.5 when you untick the box and always recognize them.</figcaption>
+<p class="lives-count"><span data-found>0</span> of <span data-lives>0</span> lives found their soulmate.</p>
+<figcaption>The ringed dot is your soulmate. The filled dots are the two people you meet. Over many lives the share settles near 0.25, and near 0.5 when you untick the box and always recognize them.</figcaption>
 </figure>
 <script src="pool.js"></script>
 ```
@@ -51,12 +51,12 @@ The full calculation uses this formula:
 P_find = 1 − (1 − 1/M × p_recog) ^ N
 ```
 
-M is the pool, everyone your soul mate could be, N is how many of those people you meet and talk to in your life, and p_recog is the chance that you both recognize each other.
+M is the pool, everyone your soulmate could be, N is how many of those people you meet and talk to in your life, and p_recog is the chance that you both recognize each other.
 
 <details class="more">
 <summary>How to read the formula, step by step</summary>
 
-Read it from the inside out, with the 4 people and sure recognition. Call them A, B, C and D, and say A is your soul mate.
+Read it from the inside out, with the 4 people and sure recognition. Call them A, B, C and D, and say A is your soulmate.
 
 1. One meeting works out with chance 1/4 × 1 = 1/4. It must be A, and you must recognize each other.
 2. One meeting fails with chance 1 − 1/4 = 3/4. It is B, C or D.
@@ -73,7 +73,7 @@ For a pool of more than a billion, the formula and the simple pattern give the s
 
 ## 1.33 billion people your age
 
-Munroe keeps your soul mate within a few years of your age, and I use 5 years in each direction. In How Couples Meet and Stay Together, a US survey I come back to later, three in four couples are that close in age, so I guess the data supports it to some extent.
+Munroe keeps your soulmate within a few years of your age, and I use 5 years in each direction. In How Couples Meet and Stay Together, a US survey I come back to later, three in four couples are that close in age, so I guess the data supports it to some extent.
 
 So if you are 30, your pool is everyone alive between 25 and 35, and the UN World Population Prospects 2024 count them for the year 2023: 1,328,956,521 people. That is about one in six people on Earth, and if you met one of them every second, without sleeping, it would still take you 42 years.
 
@@ -119,9 +119,9 @@ I cannot tell culture from survey method here, because four countries, Germany a
 
 ## Would you recognize them?
 
-Munroe lets soul mates recognize each other the moment their eyes meet. In my version you have to meet and talk first, and then both of you have to realize it. Many first meetings leave little time for that: in the diaries, 43% of first meetings with someone your own age are over in less than five minutes.
+Munroe lets soulmates recognize each other the moment their eyes meet. In my version you have to meet and talk first, and then both of you have to realize it. Many first meetings leave little time for that: in the diaries, 43% of first meetings with someone your own age are over in less than five minutes.
 
-No data exists for the chance that two soul mates recognize each other. I think they are more likely than not to notice, so I state my guess as a sentence: "I am 90% sure it lies between 0.6 and 0.9."
+No data exists for the chance that two soulmates recognize each other. I think they are more likely than not to notice, so I state my guess as a sentence: "I am 90% sure it lies between 0.6 and 0.9."
 
 A tool called PreliZ turns the sentence into a curve of plausible values. Many curves put 90% between 0.6 and 0.9, and it picks the flattest one, which has an average of 0.746.
 
@@ -143,15 +143,15 @@ Now we put the three numbers into the formula. N averages about 6,800, which is 
 
 That is about 1 in 261,000, and the 94% interval runs from 1 in 935,000 to 1 in 108,000.
 
-Munroe got 1 in 10,000, so my answer is about 26 times worse than his. I expected a bad number, and this one still surprised me. All three numbers pull the same way. My pool is almost three times as large as his half a billion, and he guessed 50,000 people you lock eyes with where I count 6,800 you talk to. On top of that, in my version you may meet your soul mate and not notice.
+Munroe got 1 in 10,000, so my answer is about 26 times worse than his. I expected a bad number, and this one still surprised me. All three numbers pull the same way. My pool is almost three times as large as his half a billion, and he guessed 50,000 people you lock eyes with where I count 6,800 you talk to. On top of that, in my version you may meet your soulmate and not notice.
 
-For comparison, picking six right numbers out of 49 in a lottery is 54 times less likely. But for an even chance of finding your soul mate, you would have to talk to almost 900 million people of your own age, and at one every three days that takes about 7 million years.
+For comparison, picking six right numbers out of 49 in a lottery is 54 times less likely. But for an even chance of finding your soulmate, you would have to talk to almost 900 million people of your own age, and at one every three days that takes about 7 million years.
 
-The best case is Italy, the most talkative country, where my guess for recognition gives odds of 1 in 185,000 and certain recognition gives 1 in 138,100. And even at the headline odds, about 5,100 people of your generation do find their one soul mate.
+The best case is Italy, the most talkative country, where my guess for recognition gives odds of 1 in 185,000 and certain recognition gives 1 in 138,100. And even at the headline odds, about 5,100 people of your generation do find their one soulmate.
 
 ## But almost everyone finds someone
 
-Real life sends a different message, because almost everyone I know has found someone. The couples survey from before, How Couples Meet and Stay Together, says the same in numbers: 96% of people aged 18 to 60 have had a partner. With one soul mate in 1.3 billion, almost nobody would have.
+Real life sends a different message, because almost everyone I know has found someone. The couples survey from before, How Couples Meet and Stay Together, says the same in numbers: 96% of people aged 18 to 60 have had a partner. With one soulmate in 1.3 billion, almost nobody would have.
 
 What share of the people you talk to would have to be possible partners for that to happen? I call that share q, and the fit gives q = 1 in 423.
 
@@ -168,7 +168,7 @@ Press play and watch 1,000 lives from age 18 to 60, or drag the slider to any ag
 <button type="button" class="label">Play</button>
 <label>Age <output data-age>18</output> <input type="range" min="18" max="60" value="18" aria-label="Age"></label>
 </div>
-<p class="lives-count"><span data-lit>569</span> of 1,000 have had a partner. With one soul mate each, the expected number who have found theirs is 0.</p>
+<p class="lives-count"><span data-lit>569</span> of 1,000 have had a partner. With one soulmate each, the expected number who have found theirs is 0.</p>
 <figcaption>Each dot is one life. A dot lights up once that person has had a partner. The count at every age is what the fitted model gives: 569 at 18, 967 at 30 and 994 at 60.</figcaption>
 </figure>
 <script src="lives.js"></script>
@@ -192,13 +192,13 @@ So my message is to get out there, talk to people and be a good human.
 
 - The contact diaries come from Europe between 2005 and 2012, and the couples from the US in 2017.
 - The diaries are too old to see people who meet online. In the couples survey, 37% of those who met in 2010 or later met online.
-- The chance of recognizing each other is a guess. It drives most of the uncertainty in the soul mate odds.
-- "Had a partner" is a low bar. The 14 are people who could become a partner, which is less than a soul mate.
-- The pool counts everyone your age, whatever their gender and whoever they are attracted to. If only half of them could be your soul mate, only half of the people you meet would count too, so the odds stay about the same.
+- The chance of recognizing each other is a guess. It drives most of the uncertainty in the soulmate odds.
+- "Had a partner" is a low bar. The 14 are people who could become a partner, which is less than a soulmate.
+- The pool counts everyone your age, whatever their gender and whoever they are attracted to. If only half of them could be your soulmate, only half of the people you meet would count too, so the odds stay about the same.
 
 ## If you run the code
 
-The repository also has a small demo that plays out 1,000 random lives. In one run, 962 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 764 in Germany. Nobody found their one soul mate in any of the three runs. You start it with `uv run marimo run demo/roulette.py`.
+The repository also has a small demo that plays out 1,000 random lives. In one run, 962 of them had met a possible partner by age 30 in a typical country, 990 in Italy and 764 in Germany. Nobody found their one soulmate in any of the three runs. You start it with `uv run marimo run demo/roulette.py`.
 
 Call the chance per meeting x. Here x = 0.746 / 1,328,956,521 = 0.000000000561. A computer keeps about 16 digits of every number. In 1 − x = 0.9999999994386574, nine of them go to the 9s, so only seven are left for the part that matters. The code avoids that step with two numpy functions made for tiny numbers. log1p(−x) gives log(1 − x), and expm1(y) gives exp(y) − 1 for a small number y. Neither builds a number close to 1:
 
@@ -215,5 +215,5 @@ It is the same formula, because any number a raised to the power N equals exp(N 
 - United Nations, World Population Prospects 2024, licence CC BY 3.0 IGO.
 - Rosenfeld, Michael J., Reuben J. Thomas, and Sonia Hausen. 2023. How Couples Meet and Stay Together 2017-2020-2022 combined dataset. [Computer files]. Stanford, CA: Stanford University Libraries. <https://data.stanford.edu/hcmst2017>
 - Speed dating: Fisman, Iyengar, Kamenica and Simonson, 2006, Quarterly Journal of Economics.
-- The question: Randall Munroe, *What If?*, the chapter on soul mates.
+- The question: Randall Munroe, *What If?*, the chapter on soulmates.
 - Tools: PyMC, ArviZ, PreliZ, marimo and Quarto.

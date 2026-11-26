@@ -1,6 +1,6 @@
 # Honestly Guessing: blog design
 
-A personal blog on GitHub Pages. The posts look at sayings, common ideas and other things people repeat, and at what the data says about them. Talks live here too. A post does not have to be about a saying. The first post is the soul mates project.
+A personal blog on GitHub Pages. The posts look at sayings, common ideas and other things people repeat, and at what the data says about them. Talks live here too. A post does not have to be about a saying. The first post is the soulmates project.
 
 This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start with an underscore, and `docs/` holds the rendered site.
 
@@ -12,7 +12,7 @@ This note lives in `_docs/` and not in `docs/`. Quarto skips folders that start 
 | Repository | `MedAmineGBerry/honestly-guessing-blog` on GitHub, a project site. The address is `https://medaminegberry.github.io/honestly-guessing-blog/`. The local folder is still named `MedAmineGBerry.github.io`. Every link and font path in the site is relative, so the site works under any address. |
 | Publishing | The source lives on `main`. `uv run quarto publish gh-pages` renders the site into `docs/` and pushes it to the branch `gh-pages`, which GitHub Pages serves. `docs/` is not committed. No build runs on GitHub. |
 | On and off | The site is on while the branch `gh-pages` exists on GitHub. Publishing switches it on. `git push origin --delete gh-pages` switches it off. The owner wanted a switch that needs no tool besides git. |
-| Look | A record sleeve: cream paper, warm ink, three stripes under the site name and a round sticker that carries the verdict. The blog has its own look and does not copy the soul mates deck. Titles and text are set in Fraunces, small labels in IBM Plex Sans capitals. |
+| Look | A record sleeve: cream paper, warm ink, three stripes under the site name and a round sticker that carries the verdict. The blog has its own look and does not copy the soulmates deck. Titles and text are set in Fraunces, small labels in IBM Plex Sans capitals. |
 | Colour | The paper and the ink never change. Each post picks one of six sleeve colours with `sleeve:` in its header: `mustard`, `sunset`, `teal`, `rose`, `blue` or `pastel`. Stripes, sticker and link underlines take that colour. Mustard is the house colour for pages that are not a post, and the colour of the first post. A new colour is one line in `theme.scss`. |
 | Dark mode | None. The cream paper is the identity. |
 | Fonts | The files live in `fonts/`. `theme.scss` points to them with a path relative to itself, and Quarto copies them next to the compiled stylesheet in `site_libs/bootstrap/fonts/`. The default Quarto theme loads nothing from other servers, so no reader's address goes to a font server. |
